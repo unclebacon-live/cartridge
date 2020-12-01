@@ -14,7 +14,9 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/jetstream": "^1.6",
+        "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
+        "livewire/livewire": "^2.0",
         "marcreichel/igdb-laravel": "^2.1"
     },
     "require-dev": {
