@@ -14,4 +14,8 @@ class Platform extends Model
     protected $casts = [
         'metadata' => 'object'
     ];
+
+    public function getLogoUrl() {
+        return asset('storage/logos/'.$this->slug.'.png');
+    }
 }

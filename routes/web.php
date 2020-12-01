@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GameController;
 
@@ -18,4 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/games', [GameController::class, 'index']);
+Route::get('/games', [GameController::class, 'index'])->name('games');
+Route::get('/games/{slug}', [GameController::class, 'show'])->name('game');
+
+Route::get('/platforms', [PlatformController::class, 'index'])->name('platforms');
+Route::get('/platforms/{slug}', [PlatformController::class, 'show'])->name('platform');
+
+Route::get('/files/{id}/{filename}', [FileController::class, 'download'])->name('download');

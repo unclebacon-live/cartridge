@@ -10,6 +10,7 @@ use MarcReichel\IGDBLaravel\Models\Platform;
 use RecursiveDirectoryIterator;
 use RecursiveTreeIterator;
 use Symfony\Component\Finder\Exception\DirectoryNotFoundException;
+use Illuminate\Support\Facades\Storage;
 
 class ScanGames extends Command
 {
@@ -76,6 +77,9 @@ class ScanGames extends Command
         $platform->metadata = json_decode($data->toJson());
         $platform->name = $data->name;
         $platform->save();
+
+        $logo_image_id = \MarcReichel\IGDBLaravel\Models\PlatformLogo::where('id', '=', $data->platform_logo)->first()->image_id;
+        $this->save_image('https://images.igdb.com/igdb/image/upload/t_logo_med/'.$logo_image_id.'.png', 'public/logos/'.$platform->slug);
         return $platform;
     }
 
@@ -85,7 +89,21 @@ class ScanGames extends Command
         $game->name = $data->name;
         $game->cover_image_id = \MarcReichel\IGDBLaravel\Models\Cover::where('id', '=', $game->metadata->cover)->first()->image_id;
         $game->save();
+
+        $this->cache_game_images($game);
+
         return $game;
+    }
+
+    private function cache_game_images($game) {
+        $this->save_image('https://images.igdb.com/igdb/image/upload/t_cover_big/'.$game->cover_image_id.'.jpg', 'public/covers/'.$game->slug);
+        $this->save_image('https://images.igdb.com/igdb/image/upload/t_screenshot_big/'.$game->cover_image_id.'.jpg', 'public/backgrounds/'.$game->slug);
+    }
+
+    private function save_image($url, $filename) {
+        $pathinfo = pathinfo($url);
+        $contents = file_get_contents($url);
+        Storage::put($filename.'.'.$pathinfo['extension'], $contents);
     }
 
     /**
@@ -139,7 +157,7 @@ class ScanGames extends Command
                 $file = new \App\Models\File();
                 $file->platform_id = $platform->id;
                 $file->game_id = $game->id;
-                $file->path = $path;
+                $file->path = str_replace(env('GAMES_PATH'), '', $path);
                 $file->save();
             }
 

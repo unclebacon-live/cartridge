@@ -1,0 +1,142 @@
+
+$primary: #6656fc;
+$fancy-bg: linear-gradient(176deg, rgba(102,86,252,1) 0%, rgba(102,86,252,1) 52%, rgba(147,86,252,1) 100%);
+$fancy-bg-hover: linear-gradient(105deg, rgba(102,86,252,1) 0%, rgba(147,86,252,1) 52%, rgba(147,86,252,1) 100%);
+
+@import 'node_modules/bulma/bulma';
+
+$alt-font: 'Righteous', sans-serif;
+
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    font-size: 16px;
+    background: $black;
+}
+
+body {
+    min-height: 100%;
+    background: $black;
+    color: $white;
+}
+
+#menu {
+    background: $fancy-bg;
+}
+
+.button.is-primary {
+    // transition: all 0.1s ease-in-out;
+
+    &:hover {
+        background: $fancy-bg-hover;
+        box-shadow: 0 5px 35px transparentize($primary, 0.6);
+    }
+}
+
+.game-info {
+    padding: 2em 5em;
+    top: 165px;
+    font-size: 20px;
+}
+
+.game-info-container {
+    top: 100px;
+    // background: $black;
+    padding: 5em;
+    border-radius: 10px 10px 0 0;
+}
+
+.platform-logo {
+    display: block;
+    height: 100%;
+    width: auto;
+}
+
+.game-background-container {
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    left: 0;
+    overflow: hidden;
+}
+
+.game-header .button {
+    margin-top: 1em;
+}
+
+.game-background {
+    width: 100%;
+    height: 100%;
+
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.8;
+
+    filter: blur(30px);
+    transform: scale(1.1);
+}
+
+.game-cover {
+    border-radius: 5px;
+    box-shadow: 3px 8px 20px rgba(0,0,0,0.2), 2px 5px 10px rgba(0,0,0,0.5);
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.game-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.game {
+    flex: 0 0 12%;
+    position: relative;
+    margin: 1em;
+
+    .game-cover {
+        position: relative;
+        z-index: 0;
+    }
+
+    &:hover {
+        .game-cover {
+            top: -10px;
+            right: -10px;
+            box-shadow: -10px 10px $purple;
+        }
+    }
+
+    figcaption {
+        display: none;
+        z-index: 1;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,0.2);
+        color: $white;
+        padding: 0.2em;
+    }
+}
+
+.game-name {
+    font-size: 3em;
+    letter-spacing: 0.05em;
+    line-height: 1em;
+    color: $white;
+    text-shadow: 2px 5px 15px rgba(0,0,0,0.5);
+    margin-bottom: 0.5em;
+    padding-bottom: 0.25em;
+    padding-left: 0.25em;
+    border-bottom: 10px solid $primary;
+    border-left: 40px solid $primary;
+    border-image: $fancy-bg 30;
+    font-family: $alt-font;
+    text-transform: uppercase;
+}

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Support\Facades\Storage;
 
 class Game extends Model
 {
@@ -17,6 +18,14 @@ class Game extends Model
     ];
 
     public function getCoverUrl() {
-        return 'https://images.igdb.com/igdb/image/upload/t_cover_big/'.$this->cover_image_id.'.jpg';
+        return asset('storage/covers/'.$this->slug.'.jpg');
+    }
+
+    public function getBackgroundUrl() {
+        return asset('storage/backgrounds/'.$this->slug.'.jpg');
+    }
+
+    public function files() {
+        return $this->hasMany('App\Models\File');
     }
 }
