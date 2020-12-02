@@ -1,0 +1,16 @@
+{
+    "allowed_file_types": [
+        "exe",
+        "nes",
+        "smc",
+        "iso",
+        "zip",
+        "rar",
+        "7z"
+    ],
+
+    "extension_to_platform_slug": {
+        "nes": "nes",
+        "smc": "snes--1"
+    }
+}

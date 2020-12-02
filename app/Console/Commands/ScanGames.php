@@ -22,7 +22,7 @@ class ScanGames extends Command
      *
      * @var string
      */
-    protected $signature = 'playdarr:scan';
+    protected $signature = 'cartridge:scan';
 
     protected $game_files = [];
     protected $platforms = [];
@@ -63,7 +63,7 @@ class ScanGames extends Command
                     } else if(is_file($path)) {
                         $pathinfo = pathinfo($path);
         
-                        if(in_array($pathinfo['extension'], config('playdarr.allowed_file_types'))) {
+                        if(in_array($pathinfo['extension'], config('cartridge.allowed_file_types'))) {
                             array_push($this->game_files, $path);
                             $this->log('Found %s', $path);
                         }
@@ -179,8 +179,8 @@ class ScanGames extends Command
             // Search
             $games = new Game();
 
-            if(array_key_exists($ext, config('playdarr.extension_to_platform_slug'))) {
-                $slug = config('playdarr.extension_to_platform_slug')[$ext];
+            if(array_key_exists($ext, config('cartridge.extension_to_platform_slug'))) {
+                $slug = config('cartridge.extension_to_platform_slug')[$ext];
 
                 $platform_data = Platform::where('slug', '=', $slug)->first();
                 $platform = $this->cache_platform($platform_data);
