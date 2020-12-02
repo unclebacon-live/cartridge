@@ -3,6 +3,7 @@
 use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\PlatformController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,10 @@ use App\Http\Controllers\GameController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::get('/games', [GameController::class, 'index'])->name('games');
 Route::get('/games/{slug}', [GameController::class, 'show'])->name('game');
 
@@ -22,6 +27,6 @@ Route::get('/platforms/{slug}', [PlatformController::class, 'show'])->name('plat
 
 Route::get('/files/{id}/{filename}', [FileController::class, 'download'])->name('download');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
+//     return view('dashboard');
+// })->name('dashboard');

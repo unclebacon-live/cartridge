@@ -9,6 +9,7 @@
         <header class="game-header columns">
             <div class="column is-one-quarter">
                 <img src="{{ $game->getCoverUrl() }}" class="game-cover" alt="Cover image for {{ $game->name }}" />
+
                 @foreach($game->files as $file)
                     <a href="{{ $file->getDownloadUrl() }}" class="button is-primary is-fullwidth is-medium download-button">Download  ({{ $file->platform->metadata->abbreviation }})</a>
                 @endforeach
@@ -17,9 +18,11 @@
             <div class="column game-info">
                 <h1 class="game-name">{{ $game->name }}</h1>
 
-                @if(isset($game->metadata->storyline))
-                    <p class="storyline">{{ $game->metadata->storyline }}</p>
-                @endif
+                <div class="content">
+                    @if(isset($game->metadata->summary))
+                        <p>{{ $game->metadata->summary }}</p>
+                    @endif
+                </div>
             </div>
         </header>
     </div>

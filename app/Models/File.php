@@ -9,6 +9,8 @@ class File extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['path'];
+
     public function game() {
         return $this->belongsTo('App\Models\Game');
     }

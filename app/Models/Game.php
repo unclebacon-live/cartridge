@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use \Illuminate\Support\Facades\Storage;
 
+use \App\Models\Platform;
+
 class Game extends Model
 {
     use HasFactory;
@@ -14,7 +16,8 @@ class Game extends Model
 
     protected $casts = [
         'metadata' => 'object',
-        'platform_slugs' => 'array'
+        'platform_slugs' => 'array',
+        'links' => 'array'
     ];
 
     public function getCoverUrl() {
@@ -27,5 +30,19 @@ class Game extends Model
 
     public function files() {
         return $this->hasMany('App\Models\File');
+    }
+
+    public function getPlatforms() {
+        $platforms = [];
+
+        foreach($this->platform_slugs as $slug) {
+            $platform = Platform::where('slug', $slug)->first();
+
+            if($platform != null) {
+                array_push($platforms, $platform);
+            }
+        }
+        
+        return $platforms;
     }
 }

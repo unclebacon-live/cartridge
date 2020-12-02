@@ -3,9 +3,37 @@ $primary: #6656fc;
 $fancy-bg: linear-gradient(176deg, rgba(102,86,252,1) 0%, rgba(102,86,252,1) 52%, rgba(147,86,252,1) 100%);
 $fancy-bg-hover: linear-gradient(105deg, rgba(102,86,252,1) 0%, rgba(147,86,252,1) 52%, rgba(147,86,252,1) 100%);
 
+$family-primary: "Lato", Geneva, Tahoma, sans-serif;
+$header-font: "Comfortaa", "Lato", Geneva, Tahoma, sans-serif;
+
 @import 'node_modules/bulma/bulma';
 
-$alt-font: 'Righteous', sans-serif;
+#welcome-hero {
+    background: $black;
+    height: 60vh;
+
+    .hero-body {
+        pointer-events: none;
+    }
+
+    .container {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+}
 
 * {
     position: relative;
@@ -15,36 +43,53 @@ $alt-font: 'Righteous', sans-serif;
 html {
     height: 100%;
     font-size: 16px;
-    background: $black;
+    background: $black-ter;
 }
 
 body {
     min-height: 100%;
-    background: $black;
     color: $white;
 }
 
-#menu {
-    background: $fancy-bg;
+#app, main {
+    position: static;
 }
 
-.button.is-primary {
-    // transition: all 0.1s ease-in-out;
+#menu {
+    background: $black;
+}
 
-    &:hover {
-        background: $fancy-bg-hover;
-        box-shadow: 0 5px 35px transparentize($primary, 0.6);
-    }
+#login-form {
+    position: absolute;
+    margin: 0 auto;
+    width: 640px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+main {
+    position:static;
+}
+
+.platform-list {
+    padding: 2em;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.platform-list .platform {
+    flex: 0 0 33%;
+    padding: 0.25em;
 }
 
 .game-info {
     padding: 2em 5em;
-    top: 165px;
-    font-size: 20px;
+    top: 175px;
 }
 
 .game-info-container {
-    top: 100px;
+    top: 50px;
     // background: $black;
     padding: 5em;
     border-radius: 10px 10px 0 0;
@@ -61,11 +106,16 @@ body {
     height: 300px;
     position: absolute;
     left: 0;
+    top: 0;
     overflow: hidden;
 }
 
 .game-header .button {
     margin-top: 1em;
+    &:hover {
+        background: $fancy-bg-hover;
+        box-shadow: 0 5px 35px transparentize($primary, 0.6);
+    }
 }
 
 .game-background {
@@ -75,14 +125,16 @@ body {
     background-size: cover;
     background-position: center center;
     opacity: 0.8;
+    background-attachment: fixed;
 
     filter: blur(30px);
     transform: scale(1.1);
+
 }
 
 .game-cover {
-    border-radius: 5px;
-    box-shadow: 3px 8px 20px rgba(0,0,0,0.2), 2px 5px 10px rgba(0,0,0,0.5);
+    border-radius: 4px;
+    box-shadow: 3px 8px 30px rgba(0,0,0,0.1), 2px 5px 20px rgba(0,0,0,0.3);
     display: block;
     width: 100%;
     height: auto;
@@ -91,52 +143,62 @@ body {
 .game-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: 32px;
 }
 
-.game {
-    flex: 0 0 12%;
+.game-cover-container {
+    @media screen and (min-width: $tablet) {
+        flex: 0 0 calc(100% * (1/4));
+    }
+
+    @media screen and (min-width: $desktop) {
+        flex: 0 0 calc(100% * (1/6));
+    }
+
+    @media screen and (min-width: $widescreen) {
+        flex: 0 0 calc(100% * (1/7));
+    }
+
+    @media screen and (min-width: $fullhd) {
+        flex: 0 0 calc(100% * (1/8));
+    }
+
     position: relative;
-    margin: 1em;
+    flex: 0 0 calc(100% * (1/2));
+    padding: 1em;
 
     .game-cover {
-        position: relative;
         z-index: 0;
+        transition: box-shadow 0.1s ease-in-out, transform 0.1s ease-in-out;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     &:hover {
         .game-cover {
-            top: -10px;
-            right: -10px;
-            box-shadow: -10px 10px $purple;
+            transform: scale(1.05);
         }
-    }
-
-    figcaption {
-        display: none;
-        z-index: 1;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0,0,0,0.2);
-        color: $white;
-        padding: 0.2em;
     }
 }
 
 .game-name {
-    font-size: 3em;
-    letter-spacing: 0.05em;
+    font-size: 2.5em;
     line-height: 1em;
-    color: $white;
-    text-shadow: 2px 5px 15px rgba(0,0,0,0.5);
-    margin-bottom: 0.5em;
-    padding-bottom: 0.25em;
-    padding-left: 0.25em;
-    border-bottom: 10px solid $primary;
-    border-left: 40px solid $primary;
+    margin-bottom: 0.75em;
+    padding: 0.25em 0.25em 0.2em 0.25em;
+    border-bottom: 5px solid $primary;
+    border-left: 30px solid $primary;
+    font-family: $header-font;
     border-image: $fancy-bg 30;
-    font-family: $alt-font;
-    text-transform: uppercase;
+}
+
+.page-header {
+    font-family: $header-font;
+    background: $grey-darker url('/images/pattern.png') repeat;
+    color: $white;
+
+    padding: 1.5em;
+    font-size: 2.5em;
 }

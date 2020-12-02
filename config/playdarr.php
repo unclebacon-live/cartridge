@@ -3,9 +3,11 @@
 return [
     "allowed_file_types" => [
         'exe', 
-        'nes'
+        'nes',
+        'smc'
     ],
     "extension_to_platform_slug" => [
-        'nes' => 'nes'
+        'nes' => 'nes',
+        'smc' => 'snes--1'
     ]
 ];

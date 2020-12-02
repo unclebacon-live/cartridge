@@ -28,6 +28,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "bulma": "^0.9.1"
+        "bulma": "^0.9.1",
+        "particles.js": "^2.0.0"
     }
 }
