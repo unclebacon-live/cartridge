@@ -11,7 +11,10 @@
                 <img src="{{ $game->getCoverUrl() }}" class="game-cover" alt="Cover image for {{ $game->name }}" />
 
                 @foreach($game->files as $file)
-                    <a href="{{ $file->getDownloadUrl() }}" class="button is-primary is-fullwidth is-medium download-button">Download  ({{ $file->platform->metadata->abbreviation }})</a>
+                    <a href="{{ $file->getDownloadUrl() }}" class="button is-primary is-fullwidth is-medium download-button">
+                        <span class="icon is-small"><x-icon name="download"></x-icon></span>
+                        <span>Download  ({{ $file->platform->metadata->abbreviation }})</span>
+                    </a>
                 @endforeach
             </div>
     

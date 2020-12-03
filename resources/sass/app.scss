@@ -1,5 +1,37 @@
 @import 'variables';
+
+@import 'node_modules/@primer/octicons/index';
 @import 'node_modules/bulma/bulma';
+
+#login-card {
+    width: 100%;
+    max-width: 500px;
+    margin: 1em;
+    border-radius: 0.25rem;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.5), 0 10px 20px rgba(0,0,0,0.8);
+    border-top: 5px solid $grey-darker;
+
+    .page-header {
+        border-radius: 0;
+        padding: 1em;
+        font-size: 1.75em;
+    }
+}
+
+.icon > svg {
+    display: block;
+}
+
+.full-page-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 #welcome-hero {
     background: $black;

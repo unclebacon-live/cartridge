@@ -28,6 +28,7 @@ Route::get('/platforms', [PlatformController::class, 'index'])->name('platforms'
 Route::get('/platforms/{slug}', [PlatformController::class, 'show'])->name('platform');
 
 Route::get('/files/{id}/{filename}', [FileController::class, 'download'])->name('download');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

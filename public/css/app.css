@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+.octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+
 /*! bulma.io v0.9.1 | MIT License | github.com/jgthms/bulma */
 
 /* Bulma Utilities */
@@ -12791,6 +12797,36 @@ a.has-text-danger-dark:focus {
 .footer {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem;
+}
+
+#login-card {
+  width: 100%;
+  max-width: 500px;
+  margin: 1em;
+  border-radius: 0.25rem;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5), 0 10px 20px rgba(0, 0, 0, 0.8);
+  border-top: 5px solid #363636;
+}
+
+#login-card .page-header {
+  border-radius: 0;
+  padding: 1em;
+  font-size: 1.75em;
+}
+
+.icon > svg {
+  display: block;
+}
+
+.full-page-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #welcome-hero {
