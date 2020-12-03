@@ -12,5 +12,8 @@
     "extension_to_platform_slug": {
         "nes": "nes",
         "smc": "snes--1"
-    }
+    },
+
+    "allow_registration": true,
+    "allow_guests": true
 }

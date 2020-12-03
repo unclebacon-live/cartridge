@@ -17,18 +17,40 @@ use App\Http\Controllers\PlatformController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+function apply_routes() {
+    Route::get('/games', [GameController::class, 'index'])->name('games');
+    Route::get('/games/{slug}', [GameController::class, 'show'])->name('game');
+    
+    Route::get('/platforms', [PlatformController::class, 'index'])->name('platforms');
+    Route::get('/platforms/{slug}', [PlatformController::class, 'show'])->name('platform');
+    
+    Route::get('/files/{id}/{filename}', [FileController::class, 'download'])->name('download');
+}
 
-Route::get('/games', [GameController::class, 'index'])->name('games');
-Route::get('/games/{slug}', [GameController::class, 'show'])->name('game');
+if(config('cartridge.allow_guests')) {
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
-Route::get('/platforms', [PlatformController::class, 'index'])->name('platforms');
-Route::get('/platforms/{slug}', [PlatformController::class, 'show'])->name('platform');
+    apply_routes();
+} else {
+    Route::get('/', function () {
+        return redirect('home');
+    });
 
-Route::get('/files/{id}/{filename}', [FileController::class, 'download'])->name('download');
+    Route::middleware('auth')->group(function() {
+        apply_routes();
+    });
+}
 
-Auth::routes();
+$auth_options = [
+    'reset' => false
+];
+
+if(!config('cartridge.allow_registration')) {
+    $auth_options['register'] = false;
+}
+
+Auth::routes($auth_options);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -32,13 +32,15 @@
     
                     <div id="navbarBasicExample" class="navbar-menu">
                         <div class="navbar-start">
-                            <a class="navbar-item" href="{{ route('games') }}">
-                                Games
-                            </a>
-    
-                            <a class="navbar-item" href="{{ route('platforms') }}">
-                                Platforms
-                            </a>
+                            @if(config('cartridge.allow_guests') || Auth::check())
+                                <a class="navbar-item" href="{{ route('games') }}">
+                                    Games
+                                </a>
+        
+                                <a class="navbar-item" href="{{ route('platforms') }}">
+                                    Platforms
+                                </a>
+                            @endif
                         </div>
 
                         <div class="navbar-end">

@@ -227,3 +227,9 @@ main {
     padding: 1.5em;
     font-size: 2.5em;
 }
+
+input[type=email]:focus {
+    border-width: 2px;
+    border-color: $primary;
+    outline: none;
+}
