@@ -36,17 +36,46 @@
                                 Games
                             </a>
     
-                            <a class="navbar-item" href="{{ route('platforms') }}"">
+                            <a class="navbar-item" href="{{ route('platforms') }}">
                                 Platforms
                             </a>
                         </div>
                     </div>
 
                     <div class="navbar-end">
-                        <div class="navbar-item">
-                            <div class="buttons">
+                        @guest
+                            <div class="navbar-item">
+                                <div class="buttons">
+                                    @if (Route::has('login'))
+                                        <a class="button is-light" href="{{ route('login') }}">
+                                            {{ __('Login') }}
+                                        </a>
+                                    @endif
+                            
+                                    @if (Route::has('register'))
+                                        <a class="button is-primary" href="{{ route('register') }}">
+                                            <strong>{{ __('Register') }}</strong>
+                                        </a>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="navbar-item">
+                                <p>Welcome, {{ Auth::user()->name }}!</p>
+
+                                <div class="buttons">
+                                    <a class="button is-light" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+    
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </div>
+                        @endguest
                     </div>
                 </div>
             </nav>

@@ -1,11 +1,4 @@
-
-$primary: #6656fc;
-$fancy-bg: linear-gradient(176deg, rgba(102,86,252,1) 0%, rgba(102,86,252,1) 52%, rgba(147,86,252,1) 100%);
-$fancy-bg-hover: linear-gradient(105deg, rgba(102,86,252,1) 0%, rgba(147,86,252,1) 52%, rgba(147,86,252,1) 100%);
-
-$family-primary: "Lato", Geneva, Tahoma, sans-serif;
-$header-font: "Comfortaa", "Lato", Geneva, Tahoma, sans-serif;
-
+@import 'variables';
 @import 'node_modules/bulma/bulma';
 
 #welcome-hero {
