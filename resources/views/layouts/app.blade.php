@@ -16,11 +16,11 @@
 
     <body>
         <div id="app">
-            <nav class="navbar is-dark" id="menu" role="navigation" aria-label="main navigation">
+            <nav class="navbar is-black" id="menu" role="navigation" aria-label="main navigation">
                 <div class="container is-fluid">
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="/">
-                            <img src="{{ asset('images/logo.png') }}" alt="{{ env('APP_NAME') }}" />
+                        <a class="navbar-item" href="/" title="Home">
+                            <img src="{{ asset('images/logo.png') }}" alt="{{ env('APP_NAME') }} logo" />
                         </a>
     
                         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">

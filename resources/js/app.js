@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 require('particles.js');
+require('./nav-toggle');
 const feather = require('feather-icons');
 
 particlesJS.load('particles-js', 'particles.json', function() {
