@@ -40,42 +40,56 @@
                                 Platforms
                             </a>
                         </div>
-                    </div>
 
-                    <div class="navbar-end">
-                        @guest
-                            <div class="navbar-item">
-                                <div class="buttons">
-                                    @if (Route::has('login'))
-                                        <a class="button is-light" href="{{ route('login') }}">
-                                            {{ __('Login') }}
-                                        </a>
-                                    @endif
-                            
-                                    @if (Route::has('register'))
-                                        <a class="button is-primary" href="{{ route('register') }}">
-                                            <strong>{{ __('Register') }}</strong>
-                                        </a>
-                                    @endif
+                        <div class="navbar-end">
+                            @guest
+                                <div class="navbar-item">
+                                    <div class="buttons">
+                                        @if (Route::has('login'))
+                                            <a class="button is-light" href="{{ route('login') }}">
+                                                {{ __('Login') }}
+                                            </a>
+                                        @endif
+                                
+                                        @if (Route::has('register'))
+                                            <a class="button is-primary" href="{{ route('register') }}">
+                                                <strong>{{ __('Register') }}</strong>
+                                            </a>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                        @else
-                            <div class="navbar-item">
-                                <p>Welcome, {{ Auth::user()->name }}!</p>
+                            @else
+                                <div class="navbar-item has-dropdown is-hoverable">
+                                    <a class="navbar-link">
+                                        <span class="icon icon-small">
+                                            <x-icon name="user"></x-icon> 
+                                        </span>
 
-                                <div class="buttons">
-                                    <a class="button is-light" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <span>
+                                            {{ Auth::user()->name }}
+                                        </span>
                                     </a>
-    
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+
+                                    <div class="navbar-dropdown">
+                                        <a class="navbar-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                            <span class="icon icon-small">
+                                                <x-icon name="log-out"></x-icon> 
+                                            </span>
+
+                                            <span>
+                                                {{ __('Logout') }}
+                                            </span>
+                                        </a>
+        
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
-                        @endguest
+                            @endguest
+                        </div>
                     </div>
                 </div>
             </nav>
