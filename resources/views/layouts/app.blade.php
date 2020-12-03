@@ -45,17 +45,6 @@
                     <div class="navbar-end">
                         <div class="navbar-item">
                             <div class="buttons">
-                                @if(Auth::user())
-                                    Hello, {{ Auth::user()->name }}
-                                @else
-                                <a class="button is-primary">
-                                    <strong>Sign up</strong>
-                                </a>
-
-                                <a class="button is-light" href="{{ route('login') }}">
-                                    Log in
-                                </a>
-                                @endif
                             </div>
                         </div>
                     </div>

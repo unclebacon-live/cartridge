@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\PlatformController;
 
@@ -15,6 +16,7 @@ use App\Http\Controllers\PlatformController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,7 +28,3 @@ Route::get('/platforms', [PlatformController::class, 'index'])->name('platforms'
 Route::get('/platforms/{slug}', [PlatformController::class, 'show'])->name('platform');
 
 Route::get('/files/{id}/{filename}', [FileController::class, 'download'])->name('download');
-
-// Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
-//     return view('dashboard');
-// })->name('dashboard');
