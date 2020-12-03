@@ -82,6 +82,12 @@ body {
 
 #menu {
     background: $black;
+
+    .logo {
+        display: block;
+        width: 30px;
+        height: 100%;
+    }
 }
 
 #login-form {

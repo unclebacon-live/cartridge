@@ -12881,6 +12881,12 @@ main {
   background: #0a0a0a;
 }
 
+#menu .logo {
+  display: block;
+  width: 30px;
+  height: 100%;
+}
+
 #login-form {
   position: absolute;
   margin: 0 auto;

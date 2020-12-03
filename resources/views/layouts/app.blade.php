@@ -20,7 +20,7 @@
                 <div class="container is-fluid">
                     <div class="navbar-brand">
                         <a class="navbar-item" href="/" title="Home">
-                            <img src="{{ asset('images/logo.png') }}" alt="{{ env('APP_NAME') }} logo" />
+                            <img src="{{ asset('images/logo.svg') }}" alt="{{ env('APP_NAME') }} logo" class="logo" />
                         </a>
     
                         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -48,13 +48,13 @@
                                 <div class="navbar-item">
                                     <div class="buttons">
                                         @if (Route::has('login'))
-                                            <a class="button is-light" href="{{ route('login') }}">
+                                            <a class="button is-primary is-outlined" href="{{ route('login') }}">
                                                 {{ __('Login') }}
                                             </a>
                                         @endif
                                 
                                         @if (Route::has('register'))
-                                            <a class="button is-primary" href="{{ route('register') }}">
+                                            <a class="button is-primary is-outlined" href="{{ route('register') }}">
                                                 <strong>{{ __('Register') }}</strong>
                                             </a>
                                         @endif
