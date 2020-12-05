@@ -5,14 +5,9 @@
  */
 
 require('./bootstrap');
-require('particles.js');
 require('./nav-toggle');
 
 const VueFeather = require('vue-feather');
-
-particlesJS.load('particles-js', 'particles.json', function() {
-    console.log('callback - particles.js config loaded');
-});
 
 window.Vue = require('vue');
 Vue.use(VueFeather);
