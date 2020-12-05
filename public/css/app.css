@@ -13035,3 +13035,33 @@ input[type=email]:focus {
   outline: none;
 }
 
+.game-cover-container .game-controls {
+  position: absolute;
+  bottom: 1.25em;
+  right: 1.25em;
+}
+
+.ui-toggle {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.ui-toggle-icon {
+  background: #0a0a0a;
+  border-radius: 30000px;
+  width: 30px;
+  height: 30px;
+  filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.9));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-toggle-icon i {
+  width: 18px;
+  height: 18px;
+}
+
+.ui-toggle-on.ui-toggle-like {
+  color: #f14668;
+}
+
