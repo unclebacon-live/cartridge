@@ -7,15 +7,15 @@
 require('./bootstrap');
 require('particles.js');
 require('./nav-toggle');
-const feather = require('feather-icons');
+
+const VueFeather = require('vue-feather');
 
 particlesJS.load('particles-js', 'particles.json', function() {
     console.log('callback - particles.js config loaded');
 });
 
-feather.replace();
-
 window.Vue = require('vue');
+Vue.use(VueFeather);
 
 /**
  * The following block of code may be used to automatically register your
@@ -37,5 +37,5 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
  */
 
 const app = new Vue({
-    el: '#app',
+    el: '#app'
 });

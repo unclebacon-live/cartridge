@@ -63,9 +63,7 @@
                             @else
                                 <div class="navbar-item has-dropdown is-hoverable">
                                     <a class="navbar-link">
-                                        <span class="icon icon-small">
-                                            <x-icon name="user"></x-icon> 
-                                        </span>
+                                        <icon type="user"></icon>
 
                                         <span>
                                             {{ Auth::user()->name }}
@@ -76,9 +74,7 @@
                                         <a class="navbar-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
-                                            <span class="icon icon-small">
-                                                <x-icon name="log-out"></x-icon> 
-                                            </span>
+                                            <icon type="log-out"></icon>
 
                                             <span>
                                                 {{ __('Logout') }}

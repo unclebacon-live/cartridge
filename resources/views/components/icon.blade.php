@@ -1,1 +1,0 @@
-<i data-feather="{{ $name }}" class="{{ $class }}"></i>

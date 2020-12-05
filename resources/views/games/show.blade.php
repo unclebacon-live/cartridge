@@ -12,7 +12,7 @@
 
                 @foreach($game->files as $file)
                     <a href="{{ $file->getDownloadUrl() }}" class="button is-primary is-fullwidth is-medium download-button">
-                        <span class="icon is-small"><x-icon name="download"></x-icon></span>
+                        <icon type="download"></icon>
                         <span>Download  ({{ $file->platform->metadata->abbreviation }})</span>
                     </a>
                 @endforeach
