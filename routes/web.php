@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\PlatformController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,8 @@ function apply_routes() {
     
     Route::get('/files/{id}/{filename}', [FileController::class, 'download'])->name('download');
 }
+
+Route::get('/admin', [AdminController::class, 'index'])->middleware('admin')->name('admin_dashboard');
 
 if(config('cartridge.allow_guests')) {
     Route::get('/', function () {
