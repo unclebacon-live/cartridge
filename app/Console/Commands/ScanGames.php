@@ -12,6 +12,7 @@ use RecursiveDirectoryIterator;
 use RecursiveTreeIterator;
 use Symfony\Component\Finder\Exception\DirectoryNotFoundException;
 use Illuminate\Support\Facades\Storage;
+use App\Models\File;
 
 use App\Enums\WebsiteCategory;
 
@@ -79,7 +80,10 @@ class ScanGames extends Command
         $platform = \App\Models\Platform::firstOrNew(['slug' => $data->slug]);
         $platform->metadata = json_decode($data->toJson());
         $platform->name = $data->name;
+        $platform->logo_image_id = \MarcReichel\IGDBLaravel\Models\PlatformLogo::where('id', '=', $data->platform_logo)->first()->image_id;
         $platform->save();
+        
+        $this->save_image('https://images.igdb.com/igdb/image/upload/t_cover_small/'.$platform->logo_image_id.'.png', 'public/platforms/'.$platform->slug);
 
         return $platform;
     }
