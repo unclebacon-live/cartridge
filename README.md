@@ -13,7 +13,7 @@
 
 #### ROM Library
 - ~~Match ROM files to IGDB game data~~
-- Automatic scans (cron)
+- ~~Automatic scans (cron)~~
 
 #### Game List
 - ~~Recently added~~
@@ -24,5 +24,10 @@
 #### Admin
 - Create users with temporary passwords
 - Modify user data
-- Refresh database
-- Scan for new entries
+- Recreate library
+- Scan for new library entries
+
+### Future
+- Requests
+- Game collection tracker
+- Follow games for release notifications
