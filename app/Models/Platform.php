@@ -17,15 +17,15 @@ class Platform extends Model
         'metadata' => 'object'
     ];
 
-    public function getLogoUrl() {
-        return asset('storage/logos/'.$this->slug.'.png');
-    }
-
     public function getGamesAttribute() {
         return Game::whereFileExists()->whereJsonContains('platform_slugs', $this->slug)->get();
     }
 
     public static function whereFileExists() {
         return Platform::whereIn('id', File::distinct()->select('platform_id')->get());
+    }
+
+    public function getLogoPathAttribute() {
+        return asset('storage/platforms/'.$this->slug.'.png');
     }
 }

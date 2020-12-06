@@ -12913,14 +12913,24 @@ main {
   padding: 0.25em;
 }
 
+.platform-list .platform .button {
+  width: 100%;
+  height: 200px;
+}
+
+.platform-list .platform .platform-logo {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+
 .game-info {
-  padding: 2em 5em;
-  top: 175px;
+  padding: 50px;
+  top: 85px;
 }
 
 .game-info-container {
-  top: 50px;
-  padding: 5em;
+  top: 150px;
   border-radius: 10px 10px 0 0;
 }
 
@@ -12940,7 +12950,7 @@ main {
 
 .game-background-container {
   width: 100%;
-  height: 300px;
+  height: 270px;
   position: absolute;
   left: 0;
   top: 0;
@@ -12951,7 +12961,7 @@ main {
   margin-top: 1em;
 }
 
-.game-header .button:hover {
+.game-header .button.is-primary:hover {
   background: linear-gradient(105deg, #6656fc 0%, #9356fc 52%, #9356fc 100%);
   box-shadow: 0 5px 35px rgba(102, 86, 252, 0.4);
 }
@@ -12962,8 +12972,7 @@ main {
   background-size: cover;
   background-position: center center;
   opacity: 0.8;
-  background-attachment: fixed;
-  filter: blur(30px);
+  filter: blur(7px);
   transform: scale(1.1);
 }
 

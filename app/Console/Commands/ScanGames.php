@@ -26,7 +26,7 @@ class ScanGames extends Command
     protected $signature = 'cartridge:scan';
 
     protected $game_files = [];
-    protected $platforms = [];
+    protected $identified_platforms = [];
 
     const API_SLEEP_TIME = 250000;
 
@@ -52,7 +52,7 @@ class ScanGames extends Command
     }
 
     private function scan_directory($dir) {
-        $dir = realpath($dir); // remove trailing slash
+        $dir = realpath($dir); // Resolve path
 
         if(is_dir($dir)) {
             foreach(scandir($dir) as $target) {
@@ -64,7 +64,7 @@ class ScanGames extends Command
                     } else if(is_file($path)) {
                         $pathinfo = pathinfo($path);
         
-                        if(in_array($pathinfo['extension'], config('cartridge.allowed_file_types'))) {
+                        if(array_key_exists($pathinfo['extension'], config('cartridge.file_extension_slugs'))) {
                             array_push($this->game_files, $path);
                             $this->log('Found %s', $path);
                         }
@@ -80,10 +80,12 @@ class ScanGames extends Command
         $platform = \App\Models\Platform::firstOrNew(['slug' => $data->slug]);
         $platform->metadata = json_decode($data->toJson());
         $platform->name = $data->name;
-        $platform->logo_image_id = \MarcReichel\IGDBLaravel\Models\PlatformLogo::where('id', '=', $data->platform_logo)->first()->image_id;
         $platform->save();
-        
-        $this->save_image('https://images.igdb.com/igdb/image/upload/t_cover_small/'.$platform->logo_image_id.'.png', 'public/platforms/'.$platform->slug);
+
+        $logo = \MarcReichel\IGDBLaravel\Models\PlatformLogo::where('id', '=', $data->platform_logo)->first();
+        if($logo != null) {
+            $this->save_image($logo->image_id, 'cover_big', 'public/platforms/'.$platform->slug);
+        }
 
         return $platform;
     }
@@ -97,7 +99,15 @@ class ScanGames extends Command
         $game->links = $this->get_game_links($data);
         $game->save();
 
-        $this->cache_game_images($game);
+        $cover = \MarcReichel\IGDBLaravel\Models\Cover::where('id', '=', $game->metadata->cover)->first();
+        if($cover != null) {
+            $this->save_image($cover->image_id, "cover_big", 'public/covers/'.$game->slug);
+        }
+
+        $screenshot = \MarcReichel\IGDBLaravel\Models\Screenshot::where('game', '=', $game->metadata->id)->first();
+        if($screenshot != null) {
+            $this->save_image($screenshot->image_id, "screenshot_big", 'public/backgrounds/'.$game->slug);
+        }
 
         return $game;
     }
@@ -144,15 +154,16 @@ class ScanGames extends Command
         }
     }
 
-    private function cache_game_images($game) {
-        $this->save_image('https://images.igdb.com/igdb/image/upload/t_cover_big/'.$game->cover_image_id.'.jpg', 'public/covers/'.$game->slug);
-        $this->save_image('https://images.igdb.com/igdb/image/upload/t_screenshot_big/'.$game->cover_image_id.'.jpg', 'public/backgrounds/'.$game->slug);
-    }
+    private function save_image($image_id, $size, $filename) {
+        $url = "https://images.igdb.com/igdb/image/upload/t_$size/$image_id.png";
 
-    private function save_image($url, $filename) {
         $pathinfo = pathinfo($url);
-        $contents = file_get_contents($url);
-        Storage::put($filename.'.'.$pathinfo['extension'], $contents);
+
+        $contents = @file_get_contents($url);
+
+        if($contents) {
+            Storage::put($filename.'.'.$pathinfo['extension'], $contents);
+        }
     }
 
     /**
@@ -164,12 +175,12 @@ class ScanGames extends Command
     {
         $igdb = new IGDB('games');
 
-        \App\Models\File::truncate();
-
-        $this->scan_directory(env('GAMES_PATH')); // find games at game path
+        \App\Models\File::truncate(); // Clear files from DB
+        $this->scan_directory(env('GAMES_PATH')); // Find game files
 
         foreach($this->game_files as $path) {
             $pathinfo = pathinfo($path);
+
             $file = $pathinfo['basename'];
             $ext = $pathinfo['extension'];
             $filename = $pathinfo['filename'];
@@ -183,17 +194,23 @@ class ScanGames extends Command
             // Search
             $games = new Game();
 
-            if(array_key_exists($ext, config('cartridge.extension_to_platform_slug'))) {
-                $slug = config('cartridge.extension_to_platform_slug')[$ext];
+            if(array_key_exists($ext, config('cartridge.file_extension_slugs'))) {
+                $slug = config('cartridge.file_extension_slugs')[$ext];
 
-                $platform_data = Platform::where('slug', '=', $slug)->first();
-                $platform = $this->cache_platform($platform_data);
+                $platform = null;
+                if(array_key_exists($slug, $this->identified_platforms)) {
+                    $platform = $this->identified_platforms[$slug];
+                    $this->log('Identified platform: %s', $platform->name);
+                } else {
+                    $platform_data = Platform::where('slug', '=', $slug)->first();
+                    $platform = $this->cache_platform($platform_data);
+                    $this->identified_platforms[$slug] = $platform;
+                    usleep(ScanGames::API_SLEEP_TIME);
+                    $this->log('Identified and cached platform: %s', $platform->name);
+                }
 
-                $this->log('Identified platform: %s', $platform->name);
         
                 $games = $games->where('release_dates.platform', $platform->metadata->id);
-
-                usleep(ScanGames::API_SLEEP_TIME);
             }
 
             $filename_clean = preg_replace("/(?:\(.+\))?\s*(?:\[.+\])?\.(?:.*)/", "", $filename.'.'.$ext);

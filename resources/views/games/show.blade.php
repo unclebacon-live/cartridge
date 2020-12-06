@@ -2,13 +2,13 @@
 
 @section('content')
     <div class="game-background-container">
-        <div class="game-background" style="background-image:url({{ $game->getBackgroundUrl() }})"></div>
+        <div class="game-background" style="background-image:url({{ $game->background_path }})"></div>
     </div>
 
     <div class="container game-info-container">
         <header class="game-header columns">
             <div class="column is-one-quarter">
-                <img src="{{ $game->getCoverUrl() }}" class="game-cover" alt="Cover image for {{ $game->name }}" />
+                <img src="{{ $game->cover_path }}" class="game-cover" alt="Cover image for {{ $game->name }}" />
 
                 @foreach($game->files as $file)
                     @if($file->path_exists)
@@ -21,12 +21,22 @@
             </div>
     
             <div class="column game-info">
-                <h1 class="game-name">{{ $game->name }}</h1>
+                <div class="columns">
+                    <div class="column game-info-main">
+                        <h1 class="game-name">{{ $game->name }}</h1>
 
-                <div class="content">
-                    @if(isset($game->metadata->summary))
-                        <p>{{ $game->metadata->summary }}</p>
-                    @endif
+                        <div class="content">
+                            @if(isset($game->metadata->summary))
+                                <p>{{ $game->metadata->summary }}</p>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="column game-info-sidebar is-one-quarter">
+                        @foreach($game->link_list as $link)
+                            <a href="{{ $link["url"] }}" class="button is-white is-fullwidth" target="new">{{ $link["category"] }}</a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </header>

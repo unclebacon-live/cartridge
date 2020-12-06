@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use \Illuminate\Support\Facades\Storage;
+use \App\Enums\WebsiteCategory;
 
 use \App\Models\Platform;
 
@@ -20,12 +21,25 @@ class Game extends Model
         'links' => 'array'
     ];
 
-    public function getCoverUrl() {
-        return asset('storage/covers/'.$this->slug.'.jpg');
+    public function getLinkListAttribute() {
+        $links = [];
+
+        foreach($this->links as $link) {
+            array_push($links, [
+                'category' => WebsiteCategory::coerce($link['category'])->key,
+                'url' => $link['url']
+            ]);
+        }
+
+        return $links;
     }
 
-    public function getBackgroundUrl() {
-        return asset('storage/backgrounds/'.$this->slug.'.jpg');
+    public function getCoverPathAttribute() {
+        return asset('storage/covers/'.$this->slug.'.png');
+    }
+
+    public function getBackgroundPathAttribute() {
+        return asset('storage/backgrounds/'.$this->slug.'.png');
     }
 
     public function files() {

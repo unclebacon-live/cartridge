@@ -118,18 +118,31 @@ main {
 .platform-list .platform {
     flex: 0 0 33%;
     padding: 0.25em;
+
+    .button {
+        width: 100%;
+        height: 200px;
+    }
+
+    .platform-logo {
+        display: block;
+        width: auto;
+        height: 100%;
+    }
 }
 
 .game-info {
-    padding: 2em 5em;
-    top: 175px;
+    padding: 50px;
+    top: 85px;
 }
 
 .game-info-container {
-    top: 50px;
-    // background: $black;
-    padding: 5em;
+    top: 150px;
     border-radius: 10px 10px 0 0;
+}
+
+.game-info-sidebar {
+    
 }
 
 .admin {
@@ -152,7 +165,7 @@ main {
 
 .game-background-container {
     width: 100%;
-    height: 300px;
+    height: 270px;
     position: absolute;
     left: 0;
     top: 0;
@@ -161,7 +174,8 @@ main {
 
 .game-header .button {
     margin-top: 1em;
-    &:hover {
+
+    &.is-primary:hover {
         background: $fancy-bg-hover;
         box-shadow: 0 5px 35px transparentize($primary, 0.6);
     }
@@ -174,9 +188,8 @@ main {
     background-size: cover;
     background-position: center center;
     opacity: 0.8;
-    background-attachment: fixed;
 
-    filter: blur(30px);
+    filter: blur(7px);
     transform: scale(1.1);
 
 }
