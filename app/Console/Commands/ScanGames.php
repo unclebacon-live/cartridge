@@ -14,6 +14,8 @@ use Symfony\Component\Finder\Exception\DirectoryNotFoundException;
 use Illuminate\Support\Facades\Storage;
 use App\Models\File;
 
+use Illuminate\Support\Facades\Log;
+
 use App\Enums\WebsiteCategory;
 
 class ScanGames extends Command
@@ -48,6 +50,7 @@ class ScanGames extends Command
     }
 
     private function log($msg_format, ...$args) {
+        $message = sprintf($msg_format, ...$args);
         echo sprintf($msg_format, ...$args) . "\n";
     }
 
@@ -145,6 +148,7 @@ class ScanGames extends Command
     private function cache_file($path, $platform, $game) {
         if(\App\Models\File::where(['platform_id' => $platform->id, 'game_id' => $game->id])->exists()) {
             $this->log('Duplicate file for %s found at %s', $game->name, $path);
+            Log::warning("Duplicate file for {$game->name} found at $path");
         } else {
             $file = new \App\Models\File();
             $file->path = $path;
@@ -173,6 +177,7 @@ class ScanGames extends Command
      */
     public function handle()
     {
+        Log::info('Starting game scan.');
         $igdb = new IGDB('games');
 
         // \App\Models\File::truncate(); // Clear files from DB
