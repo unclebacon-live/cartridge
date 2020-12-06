@@ -10,12 +10,12 @@ use App\Models\File;
 class PlatformController extends Controller
 {
     public function index() {
-        $platforms = Platform::whereIn('id', File::distinct()->select('platform_id')->get())->get();
+        $platforms = Platform::whereFileExists()->get();
         return view('platforms.index', ['platforms' => $platforms]);
     }
 
     public function show($slug) {
         $platform = Platform::where('slug', $slug)->first();
-        return view('platforms.show', ['games' => $platform->getGames(), 'platform' => $platform]);
+        return view('platforms.show', ['games' => $platform->games, 'platform' => $platform]);
     }
 }

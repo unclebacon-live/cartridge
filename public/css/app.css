@@ -12808,6 +12808,14 @@ a.has-text-danger-dark:focus {
   font-size: 1.75em;
 }
 
+html {
+  overflow-y: auto;
+}
+
+body {
+  min-height: 100vh;
+}
+
 .icon > svg {
   display: block;
 }
@@ -12891,7 +12899,7 @@ main {
 }
 
 main {
-  position: static;
+  height: 100%;
 }
 
 .platform-list {
@@ -12914,6 +12922,14 @@ main {
   top: 50px;
   padding: 5em;
   border-radius: 10px 10px 0 0;
+}
+
+.admin {
+  height: 100%;
+}
+
+.admin .admin-content {
+  overflow-y: auto;
 }
 
 .platform-logo {
@@ -13039,6 +13055,20 @@ input[type=email]:focus {
   position: absolute;
   bottom: 1.25em;
   right: 1.25em;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 1 auto;
+}
+
+.sidebar {
+  background: #121212;
 }
 
 .ui-toggle {

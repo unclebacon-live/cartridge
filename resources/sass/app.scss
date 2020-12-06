@@ -16,6 +16,14 @@
     }
 }
 
+html {
+    overflow-y: auto;
+}
+
+body {
+    min-height: 100vh;
+}
+
 .icon > svg {
     display: block;
 }
@@ -98,7 +106,7 @@ body {
 }
 
 main {
-    position:static;
+    height: 100%;
 }
 
 .platform-list {
@@ -122,6 +130,18 @@ main {
     // background: $black;
     padding: 5em;
     border-radius: 10px 10px 0 0;
+}
+
+.admin {
+    height: 100%;
+
+    .sidebar {
+
+    }
+
+    .admin-content {
+        overflow-y: auto;
+    }
 }
 
 .platform-logo {
@@ -242,6 +262,20 @@ input[type=email]:focus {
     position: absolute;
     bottom: 1.25em;
     right: 1.25em;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 1 auto;
+}
+
+.sidebar {
+    background: $black-bis;
 }
 
 .ui-toggle {

@@ -71,6 +71,16 @@
                                     </a>
 
                                     <div class="navbar-dropdown">
+                                        @if(Auth::check() && Auth::user()->is_admin)
+                                            <a class="navbar-item" href="{{ route('admin_dashboard') }}">
+                                                <icon type="database"></icon>
+
+                                                <span>
+                                                    {{ __('Admininstration') }}
+                                                </span>
+                                            </a>
+                                        @endif
+                                            
                                         <a class="navbar-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">

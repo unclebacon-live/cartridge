@@ -21,7 +21,11 @@ class Platform extends Model
         return asset('storage/logos/'.$this->slug.'.png');
     }
 
-    public function getGames() {
-        return Game::whereJsonContains('platform_slugs', $this->slug)->get();
+    public function getGamesAttribute() {
+        return Game::whereFileExists()->whereJsonContains('platform_slugs', $this->slug)->get();
+    }
+
+    public static function whereFileExists() {
+        return Platform::whereIn('id', File::distinct()->select('platform_id')->get());
     }
 }

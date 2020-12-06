@@ -32,7 +32,7 @@ class Game extends Model
         return $this->hasMany('App\Models\File');
     }
 
-    public function getPlatforms() {
+    public function getPlatformsAttribute() {
         $platforms = [];
 
         foreach($this->platform_slugs as $slug) {
@@ -44,5 +44,9 @@ class Game extends Model
         }
         
         return $platforms;
+    }
+
+    public static function whereFileExists() {
+        return Game::whereIn('id', File::distinct()->select('game_id')->get());
     }
 }
