@@ -17,8 +17,8 @@ A work-in-progress. Stay tuned!
 - Automatic scans (cron)
 
 #### Game List
-- Recently added
-- Most downloaded
+- ~~Recently added~~
+- ~~Most downloaded~~
 - ~~Platform lists~~
 - Basic search
 
