@@ -1,6 +1,5 @@
 ![alt text](public/images/logo-full.png?raw=true)
-
-A work-in-progress. Stay tuned!
+## A self-hosted game library.
 
 ![screenshot-game](https://user-images.githubusercontent.com/1876231/101272337-416c8e00-3740-11eb-839a-2fe9786fc0d3.png)
 ![screenshot-gamelist](https://user-images.githubusercontent.com/1876231/101272338-42052480-3740-11eb-8337-42e2cbbc76cd.png)
