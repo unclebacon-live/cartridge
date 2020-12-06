@@ -7,27 +7,10 @@
 
 ## Roadmap
 ### v0.1 - Beta Release
-#### Users
-- ~~Login~~
-- Change password
-
-#### ROM Library
-- ~~Match ROM files to IGDB game data~~
-- ~~Automatic scans (cron)~~
-
-#### Game List
-- ~~Recently added~~
-- ~~Most downloaded~~
-- ~~Platform lists~~
-- Basic search
-
-#### Admin
-- Create users with temporary passwords
-- Modify user data
-- Recreate library
-- Scan for new library entries
+[See project](https://github.com/jamjnsn/cartridge/projects/1)
 
 ### Future
 - Requests
 - Game collection tracker
 - Follow games for release notifications
+- Integrated emulators
