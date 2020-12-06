@@ -26,13 +26,12 @@
                         <h1 class="game-name">{{ $game->name }}</h1>
 
                         <div class="content">
-                            @if(isset($game->metadata->summary))
-                                <p>{{ $game->metadata->summary }}</p>
-                            @endif
+                            <p>{!! $game->description !!}</p>
                         </div>
                     </div>
 
                     <div class="column game-info-sidebar is-one-quarter">
+                        <a href="https://www.igdb.com/games/{{ $game->slug }}" class="button is-primary is-large is-fullwidth" target="new">IGDB</a>
                         @foreach($game->link_list as $link)
                             <a href="{{ $link["url"] }}" class="button is-white is-fullwidth" target="new">{{ $link["category"] }}</a>
                         @endforeach

@@ -45,6 +45,18 @@ class Game extends Model
     public function files() {
         return $this->hasMany('App\Models\File');
     }
+    
+    public function getDescriptionAttribute() {
+        $description = "";
+
+        if($this->metadata->summary) {
+            $description = $this->metadata->summary;
+        } else if($this->metadata->storyline) {
+            $description = $this->metadata->storyline;
+        }
+
+        return nl2br(htmlentities($description));
+    }
 
     public function getPlatformsAttribute() {
         $platforms = [];
