@@ -175,10 +175,16 @@ class ScanGames extends Command
     {
         $igdb = new IGDB('games');
 
-        \App\Models\File::truncate(); // Clear files from DB
+        // \App\Models\File::truncate(); // Clear files from DB
         $this->scan_directory(env('GAMES_PATH')); // Find game files
 
         foreach($this->game_files as $path) {
+            $relative_path = str_replace(realpath(env('GAMES_PATH')).'/', '', $path);
+
+            if(File::where('path', $relative_path)) {
+                continue;
+            }
+
             $pathinfo = pathinfo($path);
 
             $file = $pathinfo['basename'];

@@ -8,7 +8,9 @@ use \App\Models\Game;
 class GameController extends Controller
 {
     public function index() {
-        return view('games.index', ['games' => Game::whereFileExists()->get()]);
+        return view('games.index', [
+            'games' => Game::whereFileExists()->get()
+        ]);
     }
 
     public function show($slug) {

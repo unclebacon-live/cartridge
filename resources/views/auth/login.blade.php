@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
+<particles></particles>
 <div class="container full-page-container">
+    <img src="{{ asset('images/logo-full.png') }}" alt="Cartridge" class="brand-title" />
+
     <div class="card" id="login-card">
         <h2 class="page-header">{{ __('Login') }}</h2>
         <div class="card-content content">
@@ -16,9 +20,7 @@
                             <span class="help is-danger" role="alert">{{ $message }}</span>
                         @enderror
             
-                        <span class="icon is-small is-left">
-                            <x-icon name="mail"></x-icon>
-                        </span>
+                        <icon type="mail" class="is-left"></icon>
                     </p>
                 </div>
             
@@ -30,9 +32,7 @@
                             <span class="help is-danger" role="alert">{{ $message }}</span>
                         @enderror
 
-                        <span class="icon is-small is-left">
-                            <x-icon name="lock"></x-icon>
-                        </span>
+                        <icon type="lock" class="is-left"></icon>
                     </p>
                 </div>
 

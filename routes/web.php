@@ -6,6 +6,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,34 +19,7 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-function apply_routes() {
-    Route::get('/games', [GameController::class, 'index'])->name('games');
-    Route::get('/games/{slug}', [GameController::class, 'show'])->name('game');
-    
-    Route::get('/platforms', [PlatformController::class, 'index'])->name('platforms');
-    Route::get('/platforms/{slug}', [PlatformController::class, 'show'])->name('platform');
-    
-    Route::get('/files/{id}/{filename}', [FileController::class, 'download'])->name('download');
-}
-
-Route::get('/admin', [AdminController::class, 'index'])->middleware('admin')->name('admin_dashboard');
-
-if(config('cartridge.allow_guests')) {
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
-    apply_routes();
-} else {
-    Route::get('/', function () {
-        return redirect('home');
-    });
-
-    Route::middleware('auth')->group(function() {
-        apply_routes();
-    });
-}
-
+// Auth
 $auth_options = [
     'reset' => false
 ];
@@ -56,4 +30,20 @@ if(!config('cartridge.allow_registration')) {
 
 Auth::routes($auth_options);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Admin
+Route::middleware('auth')->group(function() {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin_dashboard');
+});
+
+// Protected areas
+Route::middleware('auth')->group(function() {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+
+    Route::get('/games', [GameController::class, 'index'])->name('games');
+    Route::get('/games/{slug}', [GameController::class, 'show'])->name('game');
+    
+    Route::get('/platforms', [PlatformController::class, 'index'])->name('platforms');
+    Route::get('/platforms/{slug}', [PlatformController::class, 'show'])->name('platform');
+    
+    Route::get('/files/{id}/{filename}', [FileController::class, 'download'])->name('download');
+});
