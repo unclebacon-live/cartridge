@@ -443,7 +443,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: "Lato", Geneva, Tahoma, sans-serif;
+  font-family: "Poppins", "Lato", Geneva, Tahoma, sans-serif;
 }
 
 code,
@@ -11383,7 +11383,7 @@ a.has-text-danger-dark:focus {
 }
 
 .is-family-primary {
-  font-family: "Lato", Geneva, Tahoma, sans-serif !important;
+  font-family: "Poppins", "Lato", Geneva, Tahoma, sans-serif !important;
 }
 
 .is-family-secondary {
@@ -12817,10 +12817,11 @@ a.has-text-danger-dark:focus {
 
 html {
   overflow-y: auto;
+  height: 100%;
 }
 
 body {
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 .icon > svg {
@@ -12874,22 +12875,13 @@ body {
 
 html {
   height: 100%;
-  font-size: 16px;
-  background: #242424;
 }
 
 body {
   min-height: 100%;
+  font-size: 16px;
   color: white;
-}
-
-#app,
-main {
-  position: static;
-}
-
-#menu {
-  background: #0a0a0a;
+  background: #242424;
 }
 
 #menu .logo {
@@ -12905,10 +12897,6 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-main {
-  height: 100%;
 }
 
 .platform-list {
@@ -12941,14 +12929,6 @@ main {
 .game-info-container {
   top: 150px;
   border-radius: 10px 10px 0 0;
-}
-
-.admin {
-  height: 100%;
-}
-
-.admin .admin-content {
-  overflow-y: auto;
 }
 
 .platform-logo {
@@ -13080,11 +13060,26 @@ input[type=email]:focus {
   min-height: 100vh;
 }
 
-main {
-  flex: 1 1 auto;
+#app > nav {
+  flex: 0 0 auto;
 }
 
-.sidebar {
+#app > main {
+  flex: 1 1 auto;
+  display: flex;
+}
+
+#app > footer {
+  flex: 0 0 auto;
+}
+
+#admin {
+  display: flex;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+#admin > .sidebar {
   background: #121212;
 }
 
