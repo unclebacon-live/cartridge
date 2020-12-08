@@ -242,11 +242,16 @@ body {
 
 .navbar .navbar-item .navbar-dropdown {
     border-top: none;
-    background: $background;
+    background: $grey-darker;
+    box-shadow: none;
 
     a:hover {
         background: $primary;
     }
+}
+
+.navbar .has-dropdown.is-hoverable:hover .navbar-link {
+    background: $grey-darker !important;
 }
 
 .navbar-menu a.navbar-item {
@@ -321,7 +326,7 @@ input[type=email]:focus {
 }
 
 .admin-page {
-    padding: 2em;
+    padding: 4em;
     background: $background;
 }
 

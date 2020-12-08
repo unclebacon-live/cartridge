@@ -13030,11 +13030,16 @@ body {
 
 .navbar .navbar-item .navbar-dropdown {
   border-top: none;
-  background: #242424;
+  background: #363636;
+  box-shadow: none;
 }
 
 .navbar .navbar-item .navbar-dropdown a:hover {
   background: #6656fc;
+}
+
+.navbar .has-dropdown.is-hoverable:hover .navbar-link {
+  background: #363636 !important;
 }
 
 .navbar-menu a.navbar-item:hover {
@@ -13099,7 +13104,7 @@ input[type=email]:focus {
 }
 
 .admin-page {
-  padding: 2em;
+  padding: 4em;
   background: #242424;
 }
 
