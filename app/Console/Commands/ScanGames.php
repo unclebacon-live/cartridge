@@ -25,7 +25,7 @@ class ScanGames extends Command
      *
      * @var string
      */
-    protected $signature = 'cartridge:scan';
+    protected $signature = 'cartridge:scan {--refresh=}';
 
     protected $game_files = [];
     protected $identified_platforms = [];
@@ -74,8 +74,6 @@ class ScanGames extends Command
                     }
                 }
             }
-        } else {
-            throw new DirectoryNotFoundException($dir . ' is not a directory');
         }
     }
 
@@ -177,17 +175,27 @@ class ScanGames extends Command
      */
     public function handle()
     {
-        Log::info('Starting game scan.');
+        $refresh = boolval($this->option('refresh'));
+
+        if($refresh) {
+            Log::info('Refreshing game library...');
+        } else {
+            Log::info('Scanning for new games...');
+        }
+
         $igdb = new IGDB('games');
 
-        // \App\Models\File::truncate(); // Clear files from DB
         $this->scan_directory(env('GAMES_PATH')); // Find game files
 
         foreach($this->game_files as $path) {
             $relative_path = str_replace(realpath(env('GAMES_PATH')).'/', '', $path);
 
-            if(File::where('path', $relative_path)) {
-                continue;
+            if($refresh) {
+                File::truncate();
+            } else {
+                if(File::where('path', $relative_path)) {
+                    continue;
+                }
             }
 
             $pathinfo = pathinfo($path);
@@ -238,6 +246,7 @@ class ScanGames extends Command
             usleep(ScanGames::API_SLEEP_TIME);
         }
 
+        echo "Done!";
         return 0;
     }
 }

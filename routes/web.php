@@ -8,6 +8,7 @@ use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserAdminController;
+use App\Http\Controllers\LibraryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,9 @@ Route::middleware('admin')->group(function() {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin_dashboard');
     Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin_settings');
     Route::get('/admin/users', [UserAdminController::class, 'index'])->name('admin_users');
+
+    Route::post('/library/update', [LibraryController::class, 'update'])->name('cmd_update_library');
+    Route::post('/library/refresh', [LibraryController::class, 'refresh'])->name('cmd_refresh_library');
 });
 
 // Protected areas
