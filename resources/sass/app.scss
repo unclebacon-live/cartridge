@@ -1,6 +1,20 @@
 @import 'variables';
 @import 'node_modules/bulma/bulma';
 
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-y: auto;
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
 #login-card {
     width: 100%;
     max-width: 500px;
@@ -21,15 +35,6 @@
     width: 100%;
     max-width: 500px;
     margin-bottom: 20px;
-}
-
-html {
-    overflow-y: auto;
-    height: 100%;
-}
-
-body {
-    min-height: 100%;
 }
 
 .icon > svg {
@@ -74,23 +79,6 @@ body {
     position: absolute;
     width: 100%;
     height: calc(100% - 56px);
-}
-
-* {
-    position: relative;
-    box-sizing: border-box;
-}
-
-html {
-    height: 100%;
-}
-
-body {
-    min-height: 100%;
-
-    font-size: 16px;
-    color: $white;
-    background: $black-ter;
 }
 
 #menu {
@@ -243,12 +231,43 @@ body {
     padding: 0.25em 0.25em 0.2em 0.25em;
     border-bottom: 5px solid $primary;
     border-left: 30px solid $primary;
-    font-family: $header-font;
+    font-family: $family-secondary;
     border-image: $fancy-bg 30;
 }
 
+.icon {
+    width: 16px;
+    height: 16px;
+}
+
+.navbar .navbar-item .navbar-dropdown {
+    border-top: none;
+    background: $background;
+
+    a:hover {
+        background: $primary;
+    }
+}
+
+.navbar-menu a.navbar-item {
+    &:hover {
+        background: $fancy-bg;
+    }
+}
+
+.has-icon-left {
+    .icon {
+        margin-right: 0.5em;
+    }
+}
+
+.icon.is-smaller {
+    width: 0.9em;
+    height: 0.9em;
+}
+
 .page-header {
-    font-family: $header-font;
+    font-family: $family-secondary;
     background: $grey-darker url('/images/pattern.png') repeat;
     color: $white;
 
@@ -293,7 +312,7 @@ input[type=email]:focus {
     // width: 100%;
 
     &> .sidebar {
-        background: $black-ter;
+        // background: $body-background-;
     }
 
     .link-list a {
@@ -303,7 +322,7 @@ input[type=email]:focus {
 
 .admin-page {
     padding: 2em;
-    background: $grey-darker;
+    background: $background;
 }
 
 .link-list {

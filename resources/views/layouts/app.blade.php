@@ -8,7 +8,7 @@
         <title>@yield('title', env('APP_NAME'))</title>
 
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Poppins:wght@300;400;500;900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
         <script src="{{ asset('js/app.js') }}" defer></script>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -19,7 +19,7 @@
             <nav class="navbar is-black" id="menu" role="navigation" aria-label="main navigation">
                 <div class="container is-fluid">
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="/" title="Home">
+                        <a class="navbar-item " href="/" title="Home">
                             <img src="{{ asset('images/logo.svg') }}" alt="{{ env('APP_NAME') }} logo" class="logo" />
                         </a>
     
@@ -62,7 +62,7 @@
                                 </div>
                             @else
                                 <div class="navbar-item has-dropdown is-hoverable">
-                                    <a class="navbar-link">
+                                    <a class="navbar-link has-icon-left">
                                         <icon type="user"></icon>
 
                                         <span>
@@ -70,9 +70,9 @@
                                         </span>
                                     </a>
 
-                                    <div class="navbar-dropdown">
+                                    <div class="navbar-dropdown is-right">
                                         @if(Auth::check() && Auth::user()->is_admin)
-                                            <a class="navbar-item" href="{{ route('admin_dashboard') }}">
+                                            <a class="navbar-item has-icon-left" href="{{ route('admin_dashboard') }}">
                                                 <icon type="database"></icon>
 
                                                 <span>
@@ -81,7 +81,7 @@
                                             </a>
                                         @endif
                                             
-                                        <a class="navbar-item" href="{{ route('logout') }}"
+                                        <a class="navbar-item has-icon-left" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                                             <icon type="log-out"></icon>

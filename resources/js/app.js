@@ -7,11 +7,7 @@
 require('./bootstrap');
 require('./nav-toggle');
 
-const VueFeather = require('vue-feather');
-
 window.Vue = require('vue');
-
-Vue.use(VueFeather);
 
 /**
  * The following block of code may be used to automatically register your
