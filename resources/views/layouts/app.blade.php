@@ -102,9 +102,7 @@
                 </div>
             </nav>
 
-            <main>
-                @yield('content')
-            </main>
+            @yield('page')
         </div>
     </body>
 </html>

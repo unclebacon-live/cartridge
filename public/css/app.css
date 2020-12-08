@@ -13066,7 +13066,6 @@ input[type=email]:focus {
 
 #app > main {
   flex: 1 1 auto;
-  display: flex;
 }
 
 #app > footer {
@@ -13080,7 +13079,36 @@ input[type=email]:focus {
 }
 
 #admin > .sidebar {
-  background: #121212;
+  background: #242424;
+}
+
+#admin .link-list a {
+  color: white;
+}
+
+.admin-page {
+  padding: 2em;
+  background: #363636;
+}
+
+.link-list a {
+  display: flex;
+  align-items: center;
+  padding: 0.75em;
+  margin: 0.25em;
+  border-radius: 4px;
+}
+
+.link-list a .icon {
+  margin-right: 0.5em;
+}
+
+.link-list a:hover {
+  background: #1f1f1f;
+}
+
+.link-list a.is-active {
+  background: #6656fc;
 }
 
 .ui-toggle {

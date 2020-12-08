@@ -10,6 +10,7 @@ require('./nav-toggle');
 const VueFeather = require('vue-feather');
 
 window.Vue = require('vue');
+
 Vue.use(VueFeather);
 
 /**

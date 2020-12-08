@@ -279,7 +279,6 @@ input[type=email]:focus {
 
     &> main {
         flex: 1 1 auto;
-        display: flex;
     }
 
     &> footer {
@@ -294,7 +293,38 @@ input[type=email]:focus {
     // width: 100%;
 
     &> .sidebar {
-        background: $black-bis;
+        background: $black-ter;
+    }
+
+    .link-list a {
+        color: $white;
+    }
+}
+
+.admin-page {
+    padding: 2em;
+    background: $grey-darker;
+}
+
+.link-list {
+    a {
+        display: flex;
+        align-items: center;
+        padding: 0.75em;
+        margin: 0.25em;
+        border-radius: 4px;
+
+        .icon {
+            margin-right: 0.5em;
+        }
+
+        &:hover {
+            background: lighten($black-bis, 5%);
+        }
+
+        &.is-active {
+            background: $primary;
+        }
     }
 }
 

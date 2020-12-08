@@ -7,6 +7,7 @@ use App\Http\Controllers\GameController;
 use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +32,10 @@ if(!config('cartridge.allow_registration')) {
 Auth::routes($auth_options);
 
 // Admin
-Route::middleware('auth')->group(function() {
+Route::middleware('admin')->group(function() {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin_dashboard');
+    Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin_settings');
+    Route::get('/admin/users', [UserAdminController::class, 'index'])->name('admin_users');
 });
 
 // Protected areas
