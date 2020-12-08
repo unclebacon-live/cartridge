@@ -31,6 +31,7 @@
         "bulma": "^0.9.1",
         "feather-icons": "^4.28.0",
         "particles.js": "^2.0.0",
-        "vue-feather": "^1.1.1"
+        "vue-feather": "^1.1.1",
+        "vue-router": "^3.4.9"
     }
 }
