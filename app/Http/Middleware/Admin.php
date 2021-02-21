@@ -18,7 +18,7 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
         if(!Auth::check()
-            || Auth::check() && Auth::user()->role->is_admin) {
+            || Auth::check() && Auth::user()->is_admin) {
             redirect('home');
         }
 
