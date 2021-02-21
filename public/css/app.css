@@ -12793,6 +12793,16 @@ a.has-text-danger-dark:focus {
   padding: 3rem 1.5rem 6rem;
 }
 
+::-moz-selection {
+  background-color: #6656fc;
+  border-radius: 3px;
+}
+
+::selection {
+  background-color: #6656fc;
+  border-radius: 3px;
+}
+
 * {
   position: relative;
   box-sizing: border-box;
@@ -12910,41 +12920,33 @@ body {
   height: 100%;
 }
 
-.game-info {
-  padding: 50px;
-  top: 85px;
-}
-
-.game-info-container {
-  top: 150px;
-  border-radius: 10px 10px 0 0;
-}
-
 .platform-logo {
   display: block;
   height: 100%;
   width: auto;
 }
 
-.game-background-container {
+.feature-image-container {
   width: 100%;
-  height: 270px;
-  position: absolute;
-  left: 0;
-  top: 0;
+  height: 250px;
+  margin-bottom: 50px;
   overflow: hidden;
+  position: absolute;
+  opacity: 0.4;
+  z-index: -1;
 }
 
-.game-header .button {
-  margin-top: 1em;
+.feature-image-container .feature-image-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background: linear-gradient(0deg, #141414 0%, rgba(20, 20, 20, 0) 100%);
 }
 
-.game-header .button.is-primary:hover {
-  background: linear-gradient(105deg, #6656fc 0%, #9356fc 52%, #9356fc 100%);
-  box-shadow: 0 5px 35px rgba(102, 86, 252, 0.4);
-}
-
-.game-background {
+.feature-image-container .feature-image {
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -12952,6 +12954,15 @@ body {
   opacity: 0.8;
   filter: blur(7px);
   transform: scale(1.1);
+}
+
+.game-page {
+  margin-top: 100px;
+}
+
+.game-page.button.is-primary:hover {
+  background: linear-gradient(105deg, #6656fc 0%, #9356fc 52%, #9356fc 100%);
+  box-shadow: 0 5px 35px rgba(102, 86, 252, 0.4);
 }
 
 .game-cover {
@@ -13011,6 +13022,10 @@ body {
   transform: scale(1.05);
 }
 
+.game-page .game-cover {
+  margin-bottom: 0.5em;
+}
+
 .game-name {
   font-size: 2.5em;
   line-height: 1em;
@@ -13030,16 +13045,11 @@ body {
 
 .navbar .navbar-item .navbar-dropdown {
   border-top: none;
-  background: #363636;
   box-shadow: none;
 }
 
 .navbar .navbar-item .navbar-dropdown a:hover {
   background: #6656fc;
-}
-
-.navbar .has-dropdown.is-hoverable:hover .navbar-link {
-  background: #363636 !important;
 }
 
 .navbar-menu a.navbar-item:hover {

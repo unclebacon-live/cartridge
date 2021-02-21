@@ -1,6 +1,11 @@
 @import 'variables';
 @import 'node_modules/bulma/bulma';
 
+::selection {
+    background-color: $primary;
+    border-radius: 3px;
+}
+
 * {
     position: relative;
     box-sizing: border-box;
@@ -120,58 +125,54 @@ body {
     }
 }
 
-.game-info {
-    padding: 50px;
-    top: 85px;
-}
-
-.game-info-container {
-    top: 150px;
-    border-radius: 10px 10px 0 0;
-}
-
-.game-info-sidebar {
-    
-}
-
 .platform-logo {
     display: block;
     height: 100%;
     width: auto;
 }
 
-.game-background-container {
+.feature-image-container {
     width: 100%;
-    height: 270px;
-    position: absolute;
-    left: 0;
-    top: 0;
+    height: 250px;
+    margin-bottom: 50px;
     overflow: hidden;
-}
+    position: absolute;
+    opacity: 0.4;
+    z-index: -1;
 
-.game-header .button {
-    margin-top: 1em;
+    .feature-image-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        background: linear-gradient(0deg, rgba(20,20,20,1) 0%, rgba(20,20,20,0) 100%);
+    }
 
-    &.is-primary:hover {
-        background: $fancy-bg-hover;
-        box-shadow: 0 5px 35px transparentize($primary, 0.6);
+    .feature-image {
+        width: 100%;
+        height: 100%;
+
+        background-size: cover;
+        background-position: center center;
+        opacity: 0.8;
+
+        filter: blur(7px);
+        transform: scale(1.1);
     }
 }
 
-.game-background {
-    width: 100%;
-    height: 100%;
-
-    background-size: cover;
-    background-position: center center;
-    opacity: 0.8;
-
-    filter: blur(7px);
-    transform: scale(1.1);
-
+#particles-js {
 }
 
-#particles-js {
+.game-page {
+    margin-top: 100px;
+
+    &.button.is-primary:hover {
+        background: $fancy-bg-hover;
+        box-shadow: 0 5px 35px transparentize($primary, 0.6);
+    }
 }
 
 .game-cover {
@@ -224,6 +225,10 @@ body {
     }
 }
 
+.game-page .game-cover {
+    margin-bottom: 0.5em;
+}
+
 .game-name {
     font-size: 2.5em;
     line-height: 1em;
@@ -242,7 +247,7 @@ body {
 
 .navbar .navbar-item .navbar-dropdown {
     border-top: none;
-    background: $grey-darker;
+    // background: $grey-darker;
     box-shadow: none;
 
     a:hover {
@@ -251,7 +256,7 @@ body {
 }
 
 .navbar .has-dropdown.is-hoverable:hover .navbar-link {
-    background: $grey-darker !important;
+    // background: $grey-darker !important;
 }
 
 .navbar-menu a.navbar-item {
