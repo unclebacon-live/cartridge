@@ -48,6 +48,12 @@ Route::middleware('is_setup')->group(function() {
 
         Route::post('/library/update', [LibraryController::class, 'update'])->name('cmd_update_library');
         Route::post('/library/refresh', [LibraryController::class, 'refresh'])->name('cmd_refresh_library');
+
+        Route::get('/admin/logs', function() {
+            return view('admin.logs');
+        })->name('admin_logs');
+
+        Route::get('/admin/log-viewer', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     });
 
     // Protected areas

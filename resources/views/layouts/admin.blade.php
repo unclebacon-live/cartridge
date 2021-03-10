@@ -19,6 +19,11 @@
                     <icon type="users"></icon>
                     <span>Users</span>
                 </a>
+                <a href="{{ route('admin_logs') }}"
+                    class="{{ Route::currentRouteNamed( 'admin_logs' ) ?  'is-active' : '' }}">
+                    <icon type="list"></icon>
+                    <span>Logs</span>
+                </a>
             </div>
         </aside>
 

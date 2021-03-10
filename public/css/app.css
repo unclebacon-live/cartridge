@@ -13124,6 +13124,11 @@ input.input:focus {
   right: 1.25em;
 }
 
+iframe.full-size {
+  width: 100%;
+  height: 100%;
+}
+
 #app {
   display: flex;
   flex-direction: column;
@@ -13173,8 +13178,8 @@ input.input:focus {
 }
 
 .admin-page {
-  padding: 4em;
   background: whitesmoke;
+  padding: 0;
 }
 
 .link-list a {
