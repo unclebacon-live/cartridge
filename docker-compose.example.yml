@@ -1,0 +1,10 @@
+services:
+  cartridge:
+    image: jamjnsn/cartridge:latest
+    ports:
+      - 8000:8000
+    volumes:
+      - data:/data
+      - /path/to/games:/games
+volumes:
+  data:

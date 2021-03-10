@@ -8,12 +8,14 @@
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "start": "npm run development -- --watch & php artisan serve"
+        "start": "npm run development -- --watch & php artisan serve",
+        "docker-build": "docker build -t jamjnsn/cartridge .",
+        "docker-run": "docker run --rm -it -p 9292:8000 jamjnsn/cartridge"
     },
     "devDependencies": {
-        "axios": "^0.19",
+        "axios": "^0.21.1",
         "bootstrap": "^4.0.0",
-        "browser-sync": "^2.26.13",
+        "browser-sync": "^2.26.14",
         "browser-sync-webpack-plugin": "^2.2.2",
         "cross-env": "^7.0",
         "import-glob-loader": "^1.1.0",

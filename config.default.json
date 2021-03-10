@@ -1,0 +1,13 @@
+{
+    "scheduler": {
+        "scan": "0 * * * *"
+    },
+    "file_extension_slugs": {
+        "nes": "nes",
+        "snes": "snes--1",
+        "md": "smd",
+        "gba": "gba"
+    },
+    "allow_registration": true,
+    "allow_guests": false
+}
