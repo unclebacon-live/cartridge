@@ -22,12 +22,18 @@ class SetupController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
 
-        User::create([
+        $user = new User;
+
+        $user->fill([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-            'is_admin' => true
+            'password' => Hash::make($request->input('password'))
         ]);
+
+        $user->is_admin = true;
+        $user->save();
+
+        Artisan::call('cartridge:scan', ['--refresh' => true]);
 
         return redirect('/');
     }

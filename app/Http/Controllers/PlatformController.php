@@ -16,6 +16,6 @@ class PlatformController extends Controller
 
     public function show($slug) {
         $platform = Platform::where('slug', $slug)->first();
-        return view('platforms.show', ['games' => $platform->games, 'platform' => $platform]);
+        return view('platforms.show', ['platform' => $platform]);
     }
 }

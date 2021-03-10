@@ -13135,17 +13135,37 @@ input.input:focus {
 }
 
 #app > main {
-  flex: 1 1 auto;
+  flex: 1 1 0px;
 }
 
 #app > footer {
   flex: 0 0 auto;
 }
 
+.full-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.not-found-icon {
+  display: block;
+  width: 100%;
+  max-width: 40px;
+  margin: 0 auto;
+  margin-bottom: 0.5em;
+}
+
 #admin {
   display: flex;
-  flex: 1 1 auto;
   overflow: hidden;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 #admin .link-list a {

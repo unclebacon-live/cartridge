@@ -355,7 +355,7 @@ input.input {
     }
 
     &> main {
-        flex: 1 1 auto;
+        flex: 1 1 0px;
     }
 
     &> footer {
@@ -363,11 +363,30 @@ input.input {
     }
 }
 
+.full-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.not-found-icon {
+    display: block;
+    width: 100%;
+    max-width: 40px;
+    margin: 0 auto;
+    margin-bottom: 0.5em;
+}
+
 #admin {
     display: flex;
-    flex: 1 1 auto;
     overflow: hidden;
-    // width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 
     &> .sidebar {
         // background: $body-background-;

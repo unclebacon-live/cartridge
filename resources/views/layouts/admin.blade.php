@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('page')
+@section('content')
     <div id="admin">
         <aside class="column is-one-fifth sidebar">
             <div class="link-list">
-                <a href="{{ route('admin_dashboard') }}" 
+                <a href="{{ route('admin_dashboard') }}"
                     class="{{ Route::currentRouteNamed( 'admin_dashboard' ) ?  'is-active' : '' }}">
                     <icon type="home"></icon>
                     <span>Dashboard</span>
