@@ -16,27 +16,28 @@
 
     <body>
         <div id="app">
+            @unless($hide_navigation ?? false)
             <nav class="navbar is-black" id="menu" role="navigation" aria-label="main navigation">
                 <div class="container is-fluid">
                     <div class="navbar-brand">
                         <a class="navbar-item " href="/" title="Home">
                             <img src="{{ asset('images/logo.svg') }}" alt="{{ env('APP_NAME') }} logo" class="logo" />
                         </a>
-    
+
                         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                             <span aria-hidden="true"></span>
                             <span aria-hidden="true"></span>
                             <span aria-hidden="true"></span>
                         </a>
                     </div>
-    
+
                     <div id="navbarBasicExample" class="navbar-menu">
                         <div class="navbar-start">
                             @if(config('cartridge.allow_guests') || Auth::check())
                                 <a class="navbar-item" href="{{ route('games') }}">
                                     Games
                                 </a>
-        
+
                                 <a class="navbar-item" href="{{ route('platforms') }}">
                                     Platforms
                                 </a>
@@ -52,7 +53,7 @@
                                                 {{ __('Login') }}
                                             </a>
                                         @endif
-                                
+
                                         @if (Route::has('register'))
                                             <a class="button is-primary is-outlined" href="{{ route('register') }}">
                                                 <strong>{{ __('Register') }}</strong>
@@ -80,7 +81,7 @@
                                                 </span>
                                             </a>
                                         @endif
-                                            
+
                                         <a class="navbar-item has-icon-left" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
@@ -90,7 +91,7 @@
                                                 {{ __('Logout') }}
                                             </span>
                                         </a>
-        
+
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
                                         </form>
@@ -101,8 +102,11 @@
                     </div>
                 </div>
             </nav>
+            @endif
 
-            @yield('page')
+            <main>
+                @yield('content')
+            </main>
         </div>
     </body>
 </html>

@@ -1,11 +1,16 @@
-@extends('layouts.main', ['hide_navigation' => true])
+@extends('layouts.app', ['hide_navigation' => true])
 
 @section('content')
-<div class="container full-page-container">
-    <div class="card" id="login-card">
-        <h2 class="page-header">{{ __('Register') }}</h2>
+
+<div class="container container-small pt-6">
+    <div class="card">
+        <div class="card-header page-header">
+            <h1>Setup</h1>
+        </div>
+
         <div class="card-content content">
-            <form method="POST" action="{{ route('register') }}">
+            <h2>{{ __('Admin User') }}</h2>
+            <form method="POST" action="{{ route('setup') }}">
                 @csrf
 
                 <div class="field">
@@ -53,12 +58,13 @@
                 <div class="field">
                     <p class="control">
                         <button type="submit" class="button is-primary">
-                            {{ __('Register') }}
+                            {{ __('Submit') }}
                         </button>
                     </p>
                 </div>
             </form>
         </div>
     </div>
+
 </div>
 @endsection

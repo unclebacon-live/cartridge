@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app', ['hide_navigation' => true])
 
 @section('content')
 <div class="container">

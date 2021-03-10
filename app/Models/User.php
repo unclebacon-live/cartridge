@@ -40,4 +40,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function any_exist() {
+        return User::all()->count() > 0;
+    }
 }

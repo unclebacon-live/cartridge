@@ -1,14 +1,37 @@
 @import 'variables';
-@import 'node_modules/bulma/bulma';
+@import '~bulma';
 
 ::selection {
     background-color: $primary;
+    color: $white;
     border-radius: 3px;
 }
 
 * {
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+    background: $black-bis;
+    // border-radius: 20px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: $black-ter;
+    border-radius: 3px;
+    // border-left: 4px solid $black-bis;
+}
+
+* * {
     position: relative;
     box-sizing: border-box;
+
+    scrollbar-width: thin;
+    scrollbar-color: $black-bis $grey-darker;
 }
 
 html {
@@ -101,6 +124,10 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.container.container-small {
+    max-width: 500px !important;
 }
 
 .platform-list {
@@ -283,12 +310,33 @@ body {
 
     padding: 1.5em;
     font-size: 2.5em;
+    border-radius: 0;
+    box-shadow: 0 -2px 0 $grey-darker;
 }
 
-input[type=email]:focus {
+input.input {
+    // border: 2px solid transparent;
     border-width: 2px;
-    border-color: $primary;
-    outline: none;
+
+    &:focus {
+        box-shadow: none;
+        outline: 0;
+        border-color: $primary;
+        box-shadow: 0 0 10px transparentize($primary, 0.7);
+    }
+}
+
+.content h2 {
+    // border-bottom: 2px solid $grey-dark;
+
+    &:after {
+        content: "";
+        display: block;
+        background: $grey-light;
+        height: 2px;
+        margin-top: 0.15em;
+        border-radius: 100px;
+    }
 }
 
 .game-cover-container .game-controls {

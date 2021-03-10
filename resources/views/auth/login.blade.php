@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app', ['hide_navigation' => true])
 
 @section('content')
 
@@ -19,11 +19,11 @@
                         @error('email')
                             <span class="help is-danger" role="alert">{{ $message }}</span>
                         @enderror
-            
+
                         <icon type="mail" class="is-left"></icon>
                     </p>
                 </div>
-            
+
                 <div class="field">
                     <p class="control has-icons-left">
                         <input class="input @error('password') is-danger @enderror" name="password" type="password" placeholder="Password" required autocomplete="current-password">
@@ -46,7 +46,7 @@
                 </div>
 
                 <hr>
-            
+
                 <div class="field">
                     <p class="control">
                         <button type="submit" class="button is-primary">
