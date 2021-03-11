@@ -113,8 +113,19 @@ body {
     .logo {
         display: block;
         width: 30px;
-        margin-right: 1em;
+        margin: 0 1em;
         height: 100%;
+        transition: filter 0.1s ease-in-out;
+    }
+}
+
+.navbar-brand {
+    &:hover .navbar-item {
+        background: transparent !important;
+
+        .logo {
+            filter: drop-shadow(0 0 10px $primary);
+        }
     }
 }
 
@@ -191,9 +202,6 @@ body {
     }
 }
 
-#particles-js {
-}
-
 .game-page {
     margin-top: 100px;
     color: $white-ter;
@@ -264,7 +272,6 @@ body {
     margin-bottom: 0.75em;
     padding-bottom: 0.25em;
     border-bottom: 3px solid $primary;
-    // border-left: 30px solid $primary;
     font-family: $family-secondary;
     border-image: $fancy-bg 30;
 }
@@ -276,16 +283,11 @@ body {
 
 .navbar .navbar-item .navbar-dropdown {
     border-top: none;
-    // background: $grey-darker;
     box-shadow: none;
 
     a:hover {
         background: transparent;
     }
-}
-
-.navbar .has-dropdown.is-hoverable:hover .navbar-link {
-    // background: $grey-darker !important;
 }
 
 .has-dropdown {

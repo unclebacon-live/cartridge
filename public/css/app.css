@@ -12905,8 +12905,17 @@ body {
 #menu .logo {
   display: block;
   width: 30px;
-  margin-right: 1em;
+  margin: 0 1em;
   height: 100%;
+  transition: filter 0.1s ease-in-out;
+}
+
+.navbar-brand:hover .navbar-item {
+  background: transparent !important;
+}
+
+.navbar-brand:hover .navbar-item .logo {
+  filter: drop-shadow(0 0 10px #6656fc);
 }
 
 #login-form {
