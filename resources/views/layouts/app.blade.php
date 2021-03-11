@@ -24,14 +24,14 @@
                             <img src="{{ asset('images/logo.svg') }}" alt="{{ env('APP_NAME') }} logo" class="logo" />
                         </a>
 
-                        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="menu">
                             <span aria-hidden="true"></span>
                             <span aria-hidden="true"></span>
                             <span aria-hidden="true"></span>
                         </a>
                     </div>
 
-                    <div id="navbarBasicExample" class="navbar-menu">
+                    <div id="menu" class="navbar-menu">
                         <div class="navbar-start">
                             @if(config('cartridge.allow_guests') || Auth::check())
                                 <div class="navbar-item">
