@@ -33,8 +33,6 @@ class SetupController extends Controller
         $user->is_admin = true;
         $user->save();
 
-        Artisan::call('cartridge:scan', ['--refresh' => true]);
-
         return redirect('/');
     }
 }
