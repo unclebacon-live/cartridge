@@ -49,7 +49,7 @@ RUN mkdir -p /data && \
     touch /data/db.sqlite
 
 # Run
-VOLUME [ "/games", "/data" ]
+VOLUME [ "/games", "/app/storage" ]
 EXPOSE 8000
 
 RUN chmod +x /app/docker-start.sh
