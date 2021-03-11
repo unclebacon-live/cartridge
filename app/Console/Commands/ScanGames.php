@@ -66,7 +66,7 @@ class ScanGames extends Command
                         $this->scan_directory($path);
                     } else if(is_file($path)) {
                         $pathinfo = pathinfo($path);
-        
+
                         if(array_key_exists($pathinfo['extension'], config('cartridge.file_extension_slugs'))) {
                             array_push($this->game_files, $path);
                             $this->log('Found %s', $path);
@@ -148,6 +148,7 @@ class ScanGames extends Command
             $this->log('Duplicate file for %s found at %s', $game->name, $path);
             Log::warning("Duplicate file for {$game->name} found at $path");
         } else {
+            $this->log("Added ".$game->name);
             $file = new \App\Models\File();
             $file->path = $path;
             $file->platform_id = $platform->id;
@@ -190,13 +191,14 @@ class ScanGames extends Command
         foreach($this->game_files as $path) {
             $relative_path = str_replace(realpath(env('GAMES_PATH')).'/', '', $path);
 
-            if($refresh) {
-                File::truncate();
-            } else {
-                if(File::where('path', $relative_path)) {
-                    continue;
-                }
-            }
+            // if($refresh) {
+            //     File::truncate();
+            // } else {
+            //     if(File::where('path', $relative_path)) {
+            //         $this->log('what');
+            //         continue;
+            //     }
+            // }
 
             $pathinfo = pathinfo($path);
 
@@ -228,7 +230,7 @@ class ScanGames extends Command
                     $this->log('Identified and cached platform: %s', $platform->name);
                 }
 
-        
+
                 $games = $games->where('release_dates.platform', $platform->metadata->id);
             }
 
