@@ -12812,11 +12812,11 @@ a.has-text-danger-dark:focus {
 }
 
 *::-webkit-scrollbar-track {
-  background: #121212;
+  background: #0a0a0a;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #242424;
+  background-color: #4a4a4a;
   border-radius: 3px;
 }
 
@@ -12824,7 +12824,7 @@ a.has-text-danger-dark:focus {
   position: relative;
   box-sizing: border-box;
   scrollbar-width: thin;
-  scrollbar-color: #121212 #363636;
+  scrollbar-color: #0a0a0a #4a4a4a;
 }
 
 html {
@@ -13086,7 +13086,7 @@ body {
 }
 
 .has-dropdown:hover .navbar-link {
-  background: #242424 !important;
+  background: #121212 !important;
 }
 
 .has-dropdown .navbar-item {
@@ -13099,7 +13099,7 @@ body {
 }
 
 .navbar-dropdown {
-  background: #242424;
+  background: #121212;
 }
 
 .navbar-item {
@@ -13138,12 +13138,11 @@ body {
 
 .page-header {
   font-family: "Comfortaa", "Lato", Geneva, Tahoma, sans-serif;
-  background: #363636 url("/images/pattern.png") repeat;
+  background: #242424 url("/images/pattern.png") repeat;
   color: white;
   padding: 1em;
   font-size: 2em;
   border-radius: 0;
-  box-shadow: 0 -2px 0 #363636;
 }
 
 input.input {
