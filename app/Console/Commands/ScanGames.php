@@ -148,7 +148,6 @@ class ScanGames extends Command
             $this->log('Duplicate file for %s found at %s', $game->name, $path);
             Log::warning("Duplicate file for {$game->name} found at $path");
         } else {
-            $this->log("Added ".$game->name);
             $file = new \App\Models\File();
             $file->path = $path;
             $file->platform_id = $platform->id;
@@ -190,15 +189,6 @@ class ScanGames extends Command
 
         foreach($this->game_files as $path) {
             $relative_path = str_replace(realpath(env('GAMES_PATH')).'/', '', $path);
-
-            // if($refresh) {
-            //     File::truncate();
-            // } else {
-            //     if(File::where('path', $relative_path)) {
-            //         $this->log('what');
-            //         continue;
-            //     }
-            // }
 
             $pathinfo = pathinfo($path);
 
