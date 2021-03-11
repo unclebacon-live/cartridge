@@ -10,7 +10,7 @@
         <h2>Recently Added</h2>
     </div>
 
-    <div class="container is-fluid">
+    <div class="p-2 is-fluid">
         @include('games.list', ['games' => $recent])
     </div>
     @endif
@@ -20,7 +20,7 @@
         <h2>Most Popular</h2>
     </div>
 
-    <div class="container is-fluid">
+    <div class="p-2 is-fluid">
         @include('games.list', ['games' => $popular])
     </div>
     @endif

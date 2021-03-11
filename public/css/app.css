@@ -12905,6 +12905,7 @@ body {
 #menu .logo {
   display: block;
   width: 30px;
+  margin-right: 1em;
   height: 100%;
 }
 
@@ -12981,6 +12982,7 @@ body {
 
 .game-page {
   margin-top: 100px;
+  color: whitesmoke;
 }
 
 .game-page.button.is-primary:hover {
@@ -13050,12 +13052,11 @@ body {
 }
 
 .game-name {
-  font-size: 2.5em;
+  font-size: 2em;
   line-height: 1em;
   margin-bottom: 0.75em;
-  padding: 0.25em 0.25em 0.2em 0.25em;
-  border-bottom: 5px solid #6656fc;
-  border-left: 30px solid #6656fc;
+  padding-bottom: 0.25em;
+  border-bottom: 3px solid #6656fc;
   font-family: "Comfortaa", "Lato", Geneva, Tahoma, sans-serif;
   -o-border-image: linear-gradient(176deg, #6656fc 0%, #6656fc 52%, #9356fc 100%) 30;
      border-image: linear-gradient(176deg, #6656fc 0%, #6656fc 52%, #9356fc 100%) 30;
@@ -13072,11 +13073,49 @@ body {
 }
 
 .navbar .navbar-item .navbar-dropdown a:hover {
+  background: transparent;
+}
+
+.has-dropdown:hover .navbar-link {
+  background: #242424 !important;
+}
+
+.has-dropdown .navbar-item {
+  justify-content: flex-start !important;
+}
+
+.has-dropdown .navbar-item:hover {
+  background: #6656fc !important;
+  color: white !important;
+}
+
+.navbar-dropdown {
+  background: #242424;
+}
+
+.navbar-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.navbar-item:hover {
   background: #6656fc;
 }
 
-.navbar-menu a.navbar-item:hover {
-  background: linear-gradient(176deg, #6656fc 0%, #6656fc 52%, #9356fc 100%);
+.navbar-item:hover a {
+  color: white;
+}
+
+.navbar-item a {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  width: 100%;
+  height: 100%;
 }
 
 .has-icon-left .icon {
@@ -13092,8 +13131,8 @@ body {
   font-family: "Comfortaa", "Lato", Geneva, Tahoma, sans-serif;
   background: #363636 url("/images/pattern.png") repeat;
   color: white;
-  padding: 1.5em;
-  font-size: 2.5em;
+  padding: 1em;
+  font-size: 2em;
   border-radius: 0;
   box-shadow: 0 -2px 0 #363636;
 }

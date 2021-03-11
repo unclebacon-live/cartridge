@@ -34,13 +34,18 @@
                     <div id="navbarBasicExample" class="navbar-menu">
                         <div class="navbar-start">
                             @if(config('cartridge.allow_guests') || Auth::check())
-                                <a class="navbar-item" href="{{ route('games') }}">
-                                    Games
-                                </a>
+                                <div class="navbar-item">
+                                    <a href="{{ route('games') }}">
+                                        <span>Games</span>
+                                    </a>
+                                </div>
 
-                                <a class="navbar-item" href="{{ route('platforms') }}">
-                                    Platforms
-                                </a>
+                                <div class="navbar-item">
+                                    <a href="{{ route('platforms') }}">
+                                        <span>Platforms</span>
+                                    </a>
+                                </div>
+
                             @endif
                         </div>
 

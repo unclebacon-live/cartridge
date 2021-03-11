@@ -113,6 +113,7 @@ body {
     .logo {
         display: block;
         width: 30px;
+        margin-right: 1em;
         height: 100%;
     }
 }
@@ -195,6 +196,7 @@ body {
 
 .game-page {
     margin-top: 100px;
+    color: $white-ter;
 
     &.button.is-primary:hover {
         background: $fancy-bg-hover;
@@ -257,12 +259,12 @@ body {
 }
 
 .game-name {
-    font-size: 2.5em;
+    font-size: 2em;
     line-height: 1em;
     margin-bottom: 0.75em;
-    padding: 0.25em 0.25em 0.2em 0.25em;
-    border-bottom: 5px solid $primary;
-    border-left: 30px solid $primary;
+    padding-bottom: 0.25em;
+    border-bottom: 3px solid $primary;
+    // border-left: 30px solid $primary;
     font-family: $family-secondary;
     border-image: $fancy-bg 30;
 }
@@ -278,7 +280,7 @@ body {
     box-shadow: none;
 
     a:hover {
-        background: $primary;
+        background: transparent;
     }
 }
 
@@ -286,9 +288,51 @@ body {
     // background: $grey-darker !important;
 }
 
-.navbar-menu a.navbar-item {
+.has-dropdown {
+    &:hover .navbar-link {
+        background: $black-ter !important;
+    }
+
+    .navbar-item {
+        justify-content: flex-start !important;
+
+        &:hover {
+            background: $primary !important;
+            color: $white !important;
+        }
+    }
+}
+
+.navbar-dropdown {
+    background: $black-ter;
+
+    .navbar-item {
+
+    }
+}
+
+.navbar-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+
     &:hover {
-        background: $fancy-bg;
+        background: $primary;
+
+        a {
+            color: $white;
+        }
+    }
+
+    a {
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1em;
+        width: 100%;
+        height: 100%;
     }
 }
 
@@ -308,8 +352,8 @@ body {
     background: $grey-darker url('/images/pattern.png') repeat;
     color: $white;
 
-    padding: 1.5em;
-    font-size: 2.5em;
+    padding: 1em;
+    font-size: 2em;
     border-radius: 0;
     box-shadow: 0 -2px 0 $grey-darker;
 }

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('admin_page')
-    <div class="container">
+    <div class="p-6">
         <div class="content">
             <h1>Settings</h1>
             <hr>
