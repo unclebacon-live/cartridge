@@ -9,8 +9,7 @@
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js",
         "start": "npm run development -- --watch & php artisan serve",
-        "docker-build": "docker build -t jamjnsn/cartridge .",
-        "docker-run": "docker run --rm -it -p 9292:8000 jamjnsn/cartridge"
+        "docker-test": "docker build -t jamjnsn/cartridge . && docker run --rm -it -p 9292:80 jamjnsn/cartridge"
     },
     "devDependencies": {
         "axios": "^0.21.1",

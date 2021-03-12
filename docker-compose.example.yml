@@ -5,6 +5,6 @@ services:
       - 8000:8000
     volumes:
       - data:/app/storage
-      - /path/to/games:/games
+      - /path/to/games:/app/games
 volumes:
   data:

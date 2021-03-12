@@ -56,7 +56,7 @@ return [
 
         'games' => [
             'driver' => 'local',
-            'root' => base_path(env('GAMES_PATH')),
+            'root' => env('GAMES_PATH'),
             'url' => env('APP_URL').'/storage/games',
             'visibility' => 'public',
         ],

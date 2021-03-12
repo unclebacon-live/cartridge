@@ -8,7 +8,7 @@ class CartridgeConfig {
 
     public static function get($key, $default_value = null) {
         if(static::$config == null) {
-            static::$config = Arr::dot(json_decode(file_get_contents(base_path('config.json')), true));
+            static::$config = Arr::dot(json_decode(file_get_contents(base_path('./config.json')), true));
         }
 
         return static::$config[$key] ?? $default_value;
