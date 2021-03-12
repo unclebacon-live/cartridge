@@ -2,9 +2,9 @@ services:
   cartridge:
     image: jamjnsn/cartridge:latest
     ports:
-      - 8000:8000
+      - 8000:80
     volumes:
-      - data:/app/storage
-      - /path/to/games:/app/games
+      - data:/var/www/storage
+      - /path/to/games:/games
 volumes:
   data:
