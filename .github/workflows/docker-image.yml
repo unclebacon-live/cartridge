@@ -22,5 +22,7 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag test-main:$(date +%s)
+    - name: Docker Tag
+      run: docker tag cartridge:test-main ${{secrets.DOCKER_USER}}/cartridge:test-main
     - name: Docker Push
       run: docker push ${{secrets.DOCKER_USER}}/cartridge:test-main
