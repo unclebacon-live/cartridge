@@ -25,7 +25,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Create dirs and move files
 RUN mkdir -p /var/www
 WORKDIR /var/www
-COPY --chown=www-data:www-data . .
+COPY --chown=www-data:www-data package.json package-lock.json composer.json composer.lock artisan phpunit.xml config.json webpack.config.js webpack.mix.js .
 
 COPY .env.docker .env
 
@@ -39,9 +39,7 @@ RUN \
         --no-scripts \
         --prefer-dist \
     && echo "Installing Node dependencies...\n" \
-    && npm install \
-    && echo "Running migrations...\n" \
-    && npm run production
+    && npm install
 
 # Configure Apache
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
@@ -59,6 +57,10 @@ RUN CRONFILE=/etc/cron.d/scheduler && \
 RUN mkdir -p /var/www/storage && \
     touch /var/www/storage/db.sqlite && \
     chown www-data:www-data /var/www/storage/db.sqlite
+
+COPY --chown=www-data:www-data . .
+
+RUN echo "Running migrations...\n" && npm run production
 
 # Run
 VOLUME [ "/games", "/var/www/storage" ]
